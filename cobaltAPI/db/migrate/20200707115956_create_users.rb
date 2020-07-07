@@ -8,6 +8,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :mobile_number
       t.string :email_address
       t.belongs_to :role
+      t.belongs_to :location
+      t.belongs_to :booking
+      t.belongs_to :table
       
       t.timestamps
     end

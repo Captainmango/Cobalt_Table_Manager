@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-    belongs_to :booking
+    belongs_to :booking, optional: true
     belongs_to :role
-    belongs_to :location
-    belongs_to :table
+    belongs_to :location, optional: true
+    belongs_to :table, optional: true
 
     has_secure_password
     validates_presence_of :first_name, :last_name

@@ -13,26 +13,26 @@
 ActiveRecord::Schema.define(version: 2020_07_07_130300) do
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "locations_id"
+    t.integer "location_id"
     t.integer "users_id"
-    t.integer "tables_id"
+    t.integer "table_id"
     t.string "datetime"
     t.integer "number_of_diners"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["locations_id"], name: "index_bookings_on_locations_id"
-    t.index ["tables_id"], name: "index_bookings_on_tables_id"
+    t.index ["location_id"], name: "index_bookings_on_location_id"
+    t.index ["table_id"], name: "index_bookings_on_table_id"
     t.index ["users_id"], name: "index_bookings_on_users_id"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.integer "users_id"
+    t.integer "user_id"
     t.string "name"
-    t.string "location_paswword"
+    t.string "location_password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_locations_on_users_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -63,9 +63,15 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
     t.string "mobile_number"
     t.string "email_address"
     t.integer "role_id"
+    t.integer "location_id"
+    t.integer "booking_id"
+    t.integer "table_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_users_on_booking_id"
+    t.index ["location_id"], name: "index_users_on_location_id"
     t.index ["role_id"], name: "index_users_on_role_id"
+    t.index ["table_id"], name: "index_users_on_table_id"
   end
 
 end
