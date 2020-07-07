@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+table_sizes = [2,4,6,8,10]
 
 admin = Role.create(role_title: "admin")
 owner = Role.create(role_title: "owner")
@@ -38,8 +39,9 @@ table.save
 
 
 user = User.find(1)
-booking = table.bookings.create(datetime: "2020-07-07 16:00:00", number_of_diners: 5)
-byebug
+location = Location.find(1)
+table = location.tables[0]
+booking = user.bookings.create(location: location, table: table, datetime: "2020-07-07 16:00:00", number_of_diners: 5, notes: "this is a test")
 booking.save
 
 
