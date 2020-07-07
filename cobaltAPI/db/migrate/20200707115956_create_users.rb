@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       t.has_many :bookings
-      t.has_many :role
+      t.has_many :roles
       t.string :first_name
       t.string :last_name
       t.string :username
