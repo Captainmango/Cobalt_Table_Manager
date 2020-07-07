@@ -62,10 +62,8 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
     t.string "password_digest"
     t.string "mobile_number"
     t.string "email_address"
-    t.integer "roles_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["roles_id"], name: "index_users_on_roles_id"
   end
 
 end

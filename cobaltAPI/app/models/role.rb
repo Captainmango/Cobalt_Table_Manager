@@ -1,4 +1,4 @@
 class Role < ApplicationRecord
-    belongs_to :users
+    has_many :users
     validates :role_title, uniqueness: true
 end

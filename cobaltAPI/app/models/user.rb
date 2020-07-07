@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :bookings
-    has_many :roles
+    belongs_to :roles
     has_secure_password
     validates_presence_of :first_name, :last_name
     validates :username, uniqueness: true

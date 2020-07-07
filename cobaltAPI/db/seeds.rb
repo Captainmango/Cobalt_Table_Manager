@@ -6,12 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if Role.all.length != 4
-    Role.all.each do |role|
-        byebug
-        puts "we have the #{role.role_title}"
-    end
-else
+
     admin = Role.create(role_title: "admin")
     owner = Role.create(role_title: "owner")
     server = Role.create(role_title: "server")
@@ -20,7 +15,7 @@ else
     owner.save
     server.save
     diner.save
-end
+
 
 
 5.times do 
@@ -29,8 +24,7 @@ end
                 username: Faker::Internet.username,
                 password: "123456",
                 mobile_number: "+447931555501",
-                email_address: Faker::Internet.email,
-                roles: 1)
+                email_address: Faker::Internet.email)
     user.save
 end
 
