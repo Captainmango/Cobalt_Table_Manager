@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    belongs_to :booking, optional: true
+    has_many :bookings
     belongs_to :role
     belongs_to :location, optional: true
     belongs_to :table, optional: true

@@ -30,16 +30,16 @@ diner = Role.create(role_title: "diner")
     user.save
 end
 
-nu_loc = Location.create(name: "Copacabana", location_password: "123456")
+nu_loc = Location.create(name: Faker::Company.name, location_password: "123456")
 nu_loc.save
 
 table = nu_loc.tables.create(capacity: 6)
 table.save
 
 
-
 user = User.find(1)
-booking = table.bookings.create(user: user, datetime: "2020-07-07 16:00:00", number_of_diners: 5)
+booking = table.bookings.create(datetime: "2020-07-07 16:00:00", number_of_diners: 5)
+byebug
 booking.save
 
 
