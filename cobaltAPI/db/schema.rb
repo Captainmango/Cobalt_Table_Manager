@@ -13,8 +13,17 @@
 ActiveRecord::Schema.define(version: 2020_07_07_130300) do
 
   create_table "bookings", force: :cascade do |t|
+    t.integer "locations_id"
+    t.integer "users_id"
+    t.integer "tables_id"
+    t.string "datetime"
+    t.integer "number_of_diners"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["locations_id"], name: "index_bookings_on_locations_id"
+    t.index ["tables_id"], name: "index_bookings_on_tables_id"
+    t.index ["users_id"], name: "index_bookings_on_users_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -53,8 +62,10 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
     t.string "password_digest"
     t.string "mobile_number"
     t.string "email_address"
+    t.integer "roles_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["roles_id"], name: "index_users_on_roles_id"
   end
 
 end
