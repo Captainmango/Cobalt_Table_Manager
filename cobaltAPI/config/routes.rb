@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tables
+  resources :locations
+  resources :special_considerations
   resources :bookings
   resources :users, only: [:create]
   post "/login", to: "users#login"

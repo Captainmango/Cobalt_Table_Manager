@@ -1,0 +1,2 @@
+class SpecialConsiderationsController < ApplicationController
+end

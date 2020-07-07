@@ -1,0 +1,2 @@
+class SpecialConsideration < ApplicationRecord
+end
