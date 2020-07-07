@@ -17,10 +17,20 @@ diner = Role.create(role_title: "diner")
     server.save
     diner.save
 
+admin = Role.find(1)
+user = admin.users.create(first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    username: Faker::Internet.username,
+    password: "123456",
+    mobile_number: "+447931555501",
+    email_address: Faker::Internet.email
+    )
+user.save
 
+# priveliges are the following: admin = 1, owner = 2, server = 3, diner = 4
 
 5.times do 
-    admin = Role.find(1)
+    admin = Role.find(2)
     user = admin.users.create(first_name: Faker::Name.first_name,
                 last_name: Faker::Name.last_name,
                 username: Faker::Internet.username,
@@ -31,18 +41,27 @@ diner = Role.create(role_title: "diner")
     user.save
 end
 
-nu_loc = Location.create(name: Faker::Company.name, location_password: "123456")
-nu_loc.save
+8.times do
+    nu_loc = Location.create(name: Faker::Company.name, location_password: "123456")
+    nu_loc.users << User.find(rand(2..6))
+    nu_loc.save
+end
 
-table = nu_loc.tables.create(capacity: 6)
-table.save
+Location.all.each do |location|
+    5.times do
+        table = location.tables.create(capacity: 10)
+        table.save
+    end
+end
 
 
 user = User.find(1)
 location = Location.find(1)
 table = location.tables[0]
-booking = user.bookings.create(location: location, table: table, datetime: "2020-07-07 16:00:00", number_of_diners: 5, notes: "this is a test")
-booking.save
+10.times do
+    booking = user.bookings.create(location: location, table: table, datetime: rand(30.days).seconds.from_now, number_of_diners: 5, notes: Faker::Lorem.sentence)
+    booking.save
+end
 
 
 
