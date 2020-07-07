@@ -10,17 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_120844) do
+ActiveRecord::Schema.define(version: 2020_07_07_130300) do
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.integer "users_id"
+    t.string "name"
+    t.string "location_paswword"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_locations_on_users_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "role_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "special_considerations", force: :cascade do |t|
+    t.string "consideration_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_tables_on_location_id"
   end
 
   create_table "users", force: :cascade do |t|

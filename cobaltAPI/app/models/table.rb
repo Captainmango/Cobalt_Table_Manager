@@ -1,5 +1,5 @@
 class Table < ApplicationRecord
-    has_one :location
+    belongs_to :location
     has_many :users
     has_many :bookings
 
@@ -9,5 +9,6 @@ class Table < ApplicationRecord
     end
 
     def servers
+        
     end
 end
