@@ -6,9 +6,11 @@ class Location < ApplicationRecord
     validates_presence_of :location_password
 
     def owners
+        self.users.select { |user| user.role.id == 2 }
     end
 
     def servers
+        self.users.select { |user| user.role.id == 3 }
     end
     
 end
