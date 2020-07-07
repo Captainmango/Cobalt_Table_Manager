@@ -27,9 +27,11 @@ diner = Role.create(role_title: "diner")
                 mobile_number: "+447931555501",
                 email_address: Faker::Internet.email
                 )
-                byebug
     user.save
 end
+
+user = User.find(1)
+
 
 
 
