@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
     # Create new user
     def create
-        @user = User.create(user_params)
+        role = Role.find_by(role_title: user_params[:role])
+        @user = role.users.create(user_params.except(:role))
         if @user.valid?
             token = encode_token({user_id: @user.id})
             render json: {user: @user, token: token}
@@ -41,7 +42,8 @@ class UsersController < ApplicationController
             :first_name, 
             :last_name, 
             :mobile_number, 
-            :email_address
+            :email_address,
+            :role
             )
     end
 
