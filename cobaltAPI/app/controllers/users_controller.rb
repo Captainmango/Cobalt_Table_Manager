@@ -8,8 +8,9 @@ class UsersController < ApplicationController
         @user = role.users.create(user_params.except(:role))
         if @user.valid?
             token = encode_token({user_id: @user.id})
-            render json: {user: @user, token: token}
+            render json: UsersSerializer.new(@user, {params: {token: token}}).serialized_json
         else
+            # error here should be more meaningful and be either a 400 code
             render json: {error: "Invalid username or password"}
         end
     end
@@ -21,8 +22,9 @@ class UsersController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
             token = encode_token({user_id: @user.id})
-            render json: {user: @user, token: token}
+            render json: UsersSerializer.new(@user, {params: {token: token}}).serialized_json
         else
+            # error here should be more meaningful and be either a 400 code
             render json: {error: "Invalid username or password"}
         end
     end
