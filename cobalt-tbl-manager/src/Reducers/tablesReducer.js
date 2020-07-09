@@ -1,6 +1,9 @@
 function tablesReducer(tables = [], action){
     switch (action.type){
 
+        default:
+            return tables;
+
     }
 }
 
