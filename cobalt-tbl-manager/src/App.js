@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import Home from './Routes/Home'
+import Signup from './Routes/Signup'
 
 export class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ export class App extends React.Component {
           <Route exact path="/bookings/:bookingId" render={() => <h1>This will be the bookings show page</h1>} />
           <Route exact path="/locations" render={() => <h1>This will show all the locations to book at or the owner's locations</h1>} />
           <Route exact path="/locations/:locationId" render={() => <h1> This will be the locations show page</h1>}/>
+          <Route exact path="/signup" component={Signup}/>
         </div>
       </Router>
     )

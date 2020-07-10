@@ -7,10 +7,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CobaltModal from './CobaltModal';
+import { connect } from 'react-redux';
 
 
-const CobaltNavBar = () => {
+
+const CobaltNavBar = (props) => {
     return(
         <>
         <Navbar bg="light" variant="light" expand="lg">
@@ -23,10 +24,11 @@ const CobaltNavBar = () => {
                     <NavDropdown.Item href="/bookings">My Bookings</NavDropdown.Item>
                     <NavDropdown.Item href="/locations">My Locations</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="/logout">Log out</NavDropdown.Item>
+                    {props.user.isLoggedIn === true ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
                 </NavDropdown>
-                <Button onClick={() => alert("This button activated")} variant="success">Make a Booking</Button>
+
                 </Nav>
+                <Button onClick={() => alert("This button activated")} variant="primary">Make a Booking</Button>
                     <Form inline>
                     <InputGroup>
                     <InputGroup.Prepend>
@@ -55,4 +57,10 @@ const CobaltNavBar = () => {
     
 }
 
-export default CobaltNavBar;
+const mapStateToProps = (state) => {
+    return {
+        user: state.users[0]
+    }
+}
+
+export default connect(mapStateToProps)(CobaltNavBar);
