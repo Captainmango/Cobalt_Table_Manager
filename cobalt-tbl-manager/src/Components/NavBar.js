@@ -24,7 +24,7 @@ const CobaltNavBar = (props) => {
                     <NavDropdown.Item href="/bookings">My Bookings</NavDropdown.Item>
                     <NavDropdown.Item href="/locations">My Locations</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    {props.user.isLoggedIn === true ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
+                    {props.isLoggedIn === true ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
                 </NavDropdown>
 
                 </Nav>
@@ -59,7 +59,8 @@ const CobaltNavBar = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.users[0]
+        user: state.user,
+        isLoggedIn: state.isLoggedIn
     }
 }
 
