@@ -12,7 +12,7 @@ function usersReducer(state = {user: {}, isLoggedIn: false, requesting: false}, 
         case "CREATE_NEW_USER":
             return {
                 ...state,
-                user: [...state.user],
+                user: {...state.user},
                 isLoggedIn: false,
                 requesting: true
             }
@@ -20,7 +20,7 @@ function usersReducer(state = {user: {}, isLoggedIn: false, requesting: false}, 
         case "LOGIN_USER":
             return {
                 ...state,
-                user: [...state.user],
+                user: {...state.user},
                 isLoggedIn: false,
                 requesting: true
             }
@@ -28,7 +28,7 @@ function usersReducer(state = {user: {}, isLoggedIn: false, requesting: false}, 
         case "LOGOUT_USER":
             return {
                 ...state,
-                user: [],
+                user: {},
                 isLoggedIn: false,
                 requesting: false
             }

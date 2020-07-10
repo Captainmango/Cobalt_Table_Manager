@@ -14,6 +14,7 @@ class LogInInput extends Component {
         password: ""
     }
 
+
     handleOnChange(event) {
         this.setState({
           [event.target.name]: event.target.value
@@ -43,6 +44,7 @@ class LogInInput extends Component {
                         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl
+                        onChange={this.handleOnChange.bind(this)}
                         placeholder="Username"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
@@ -50,6 +52,7 @@ class LogInInput extends Component {
                     />
                     
                     <FormControl
+                        onChange={this.handleOnChange.bind(this)}
                         placeholder="Password"
                         aria-label="Password"
                         type="password"
