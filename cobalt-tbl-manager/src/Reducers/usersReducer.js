@@ -1,11 +1,11 @@
-function usersReducer(state = {user: [], isLoggedIn: false, requesting: false}, action){
+function usersReducer(state = {user: {}, isLoggedIn: false, requesting: false}, action){
     switch (action.type){
 
         case "ADD_USER":
             return{
                 ...state,
                 user: action.user,
-                loading: false,
+                requesting: false,
                 isLoggedIn: true
             }
 
