@@ -2,9 +2,8 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
+import LogInInput from '../Containers/Forms/LogInInput'
+
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
@@ -12,6 +11,8 @@ import { connect } from 'react-redux';
 
 
 const CobaltNavBar = (props) => {
+
+
     return(
         <>
         <Navbar bg="light" variant="light" expand="lg">
@@ -29,27 +30,8 @@ const CobaltNavBar = (props) => {
 
                 </Nav>
                 <Button onClick={() => alert("This button activated")} variant="primary">Make a Booking</Button>
-                    <Form inline>
-                    <InputGroup>
-                    <InputGroup.Prepend>
-                        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl
-                        placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        name="username"
-                    />
+                <LogInInput />
                     
-                    <FormControl
-                        placeholder="Password"
-                        aria-label="Password"
-                        type="password"
-                        name="password"
-                    />
-                    <Button variant="btn btn-outline-secondary">Log in</Button>
-                    </InputGroup>
-                    </Form>
             </Navbar.Collapse>
         </Navbar>
         </>
@@ -59,9 +41,11 @@ const CobaltNavBar = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
+        user: state.users.user,
         isLoggedIn: state.isLoggedIn
     }
 }
+
+
 
 export default connect(mapStateToProps)(CobaltNavBar);

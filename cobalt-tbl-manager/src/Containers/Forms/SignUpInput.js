@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {createNewUser} from '../../Actions/userActions'
+import { createNewUser } from '../../Actions/userActions'
 
 
 class SignUpInput extends Component {
@@ -27,16 +27,15 @@ class SignUpInput extends Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
-        //this.props.createUser(this.state);
-        //console.log(this.props)
-        // this.setState({
-        //     username: "",
-        //     password: "",
-        //     first_name: "",
-        //     last_name: "",
-        //     mobile_number: "",
-        //     email_address: ""
-        // });
+        this.props.createUser(this.state);
+        this.setState({
+            username: "",
+            password: "",
+            first_name: "",
+            last_name: "",
+            mobile_number: "",
+            email_address: ""
+        });
     }
 
     render() {
@@ -95,15 +94,11 @@ class SignUpInput extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    user: state.users.user
-    
-})
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createUser: () => dispatch(createNewUser())
+        createUser: (user) => dispatch(createNewUser(user))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpInput)
+export default connect(null, mapDispatchToProps)(SignUpInput)
