@@ -1,4 +1,4 @@
-function usersReducer(user = [], action){
+function usersReducer(user = [{isLoggedIn: 1}], action){
     switch (action.type){
 
         default:
