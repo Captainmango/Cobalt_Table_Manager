@@ -9,7 +9,12 @@ export const createNewUser = (data) => {
       })
       .then(response => response.json())
       .then(returnData => {
-        let user = returnData.attributes;
+        let user = {username: returnData.data.attributes.username,
+                    first_name: returnData.data.attributes.first_name,
+                    last_name: returnData.data.attributes.last_name,
+                    email_address: returnData.data.attributes.email_address,
+                    mobile_number: returnData.data.attributes.mobile_number};
+          localStorage.setItem("token", returnData.data.attributes.token);
         dispatch({ type: 'ADD_USER', user})});
       }
     }
@@ -25,7 +30,12 @@ export const logInUser = (username, password) => {
         })
         .then(response => response.json())
         .then(returnData => {
-            let user = returnData.attributes;
+            let user = {username: returnData.data.attributes.username,
+                        first_name: returnData.data.attributes.first_name,
+                        last_name: returnData.data.attributes.last_name,
+                        email_address: returnData.data.attributes.email_address,
+                        mobile_number: returnData.data.attributes.mobile_number};
+            localStorage.setItem("token", returnData.data.attributes.token);
             dispatch({ type: "ADD_USER", user })
         })
     }

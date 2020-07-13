@@ -23,14 +23,10 @@ class LogInInput extends Component {
 
       handleOnSubmit(event) {
         event.preventDefault();
-        this.props.logInUser(this.state);
+        this.props.logIn(this.state);
         this.setState({
             username: "",
-            password: "",
-            first_name: "",
-            last_name: "",
-            mobile_number: "",
-            email_address: ""
+            password: ""
         });
     }
 
@@ -44,6 +40,7 @@ class LogInInput extends Component {
                         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl
+                        value = {this.state.username}
                         onChange={this.handleOnChange.bind(this)}
                         placeholder="Username"
                         aria-label="Username"
@@ -52,13 +49,14 @@ class LogInInput extends Component {
                     />
                     
                     <FormControl
+                        value = {this.state.password}
                         onChange={this.handleOnChange.bind(this)}
                         placeholder="Password"
                         aria-label="Password"
                         type="password"
                         name="password"
                     />
-                    <Button variant="btn btn-outline-secondary">Log in</Button>
+                    <Button onClick={this.handleOnSubmit.bind(this)} variant="btn btn-outline-secondary">Log in</Button>
                     </InputGroup>
                     </Form>
             </>
@@ -69,7 +67,7 @@ class LogInInput extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        logIn: (username, password) => dispatch(logInUser(username, password))
+        logIn: (user) => dispatch(logInUser(user))
     }
 }
 export default connect(null, mapDispatchToProps)(LogInInput)

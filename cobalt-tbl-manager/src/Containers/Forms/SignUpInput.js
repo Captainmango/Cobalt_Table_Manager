@@ -16,7 +16,8 @@ class SignUpInput extends Component {
         first_name: "",
         last_name: "",
         mobile_number: "",
-        email_address: ""
+        email_address: "",
+        role: ""
     }
 
     handleOnChange(event) {
@@ -34,7 +35,8 @@ class SignUpInput extends Component {
             first_name: "",
             last_name: "",
             mobile_number: "",
-            email_address: ""
+            email_address: "",
+            role: ""
         });
     }
 
@@ -50,7 +52,7 @@ class SignUpInput extends Component {
                 <Form>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control value={this.state.email_address} onChange={event => this.handleOnChange(event).bind(this)} name="email_address" type="email" placeholder="Enter email" />
+                        <Form.Control value={this.state.email_address} onChange={event => this.handleOnChange(event)} name="email_address" type="email" placeholder="Enter email" />
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                         </Form.Text>
@@ -58,31 +60,40 @@ class SignUpInput extends Component {
 
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control value={this.state.username} onChange={event => this.handleOnChange(event).bind(this)} name="username" type="text" placeholder="Username" />
+                        <Form.Control value={this.state.username} onChange={event => this.handleOnChange(event)} name="username" type="text" placeholder="Username" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control value={this.state.password} onChange={event => this.handleOnChange(event).bind(this)} name="password" type="password" placeholder="Password" />
+                        <Form.Control value={this.state.password} onChange={event => this.handleOnChange(event)} name="password" type="password" placeholder="Password" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicFirstName">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control value={this.state.first_name} onChange={event => this.handleOnChange(event).bind(this)} name="first_name" type="text" placeholder="First name" />
+                        <Form.Control value={this.state.first_name} onChange={event => this.handleOnChange(event)} name="first_name" type="text" placeholder="First name" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicLastName">
                         <Form.Label>Last name</Form.Label>
-                        <Form.Control value={this.state.last_name} onChange={event => this.handleOnChange(event).bind(this)} name="last_name" type="text" placeholder="Last name" />
+                        <Form.Control value={this.state.last_name} onChange={event => this.handleOnChange(event)} name="last_name" type="text" placeholder="Last name" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicMobile">
                         <Form.Label>Mobile number</Form.Label>
-                        <Form.Control value={this.state.mobile_number} onChange={event => this.handleOnChange(event).bind(this)} name="mobile_number" type="tel" placeholder="Mobile number" pattern="+44[0-9]{4}[0-9]{3}[0-9]{3}" />
+                        <Form.Control value={this.state.mobile_number} onChange={event => this.handleOnChange(event)} name="mobile_number" type="tel" placeholder="Mobile number" />
                         <Form.Text className="text-muted">
                         The same goes for your number. Please make sure to include your dial code.
                         </Form.Text>
-                    </Form.Group>                    
+                    </Form.Group> 
+
+                    <Form.Group controlId = "formBasicRole">
+                        <Form.Label>Role</Form.Label>
+                        <Form.Control onChange={event => this.handleOnChange(event)} name="role" as="select" defaultValue="Choose your role">
+                            <option value="owner"> Owner </option>    
+                            <option value="server"> Server </option>
+                            <option value="diner"> Diner </option>
+                        </Form.Control> 
+                    </Form.Group>                   
                     
                     <Button variant="primary" type="submit" onClick={this.handleOnSubmit.bind(this)}>
                         Submit
