@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
+import { logOutUser } from '../Actions/userActions'; 
 
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,6 +49,12 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => {dispatch(logOutUser())}
+    }
+}
 
 
-export default connect(mapStateToProps)(CobaltNavBar);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CobaltNavBar);

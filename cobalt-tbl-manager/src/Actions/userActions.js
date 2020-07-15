@@ -51,5 +51,6 @@ export const logInUser = (username, password) => {
 export const logOutUser = () => {
   return (dispatch) => {
     dispatch({type: "LOGOUT_USER"})
+    alert("Logged out successfully.")
   }
 }
