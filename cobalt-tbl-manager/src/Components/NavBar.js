@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 
 const CobaltNavBar = (props) => {
-
+    const isLoggedIn = props.isLoggedIn;
 
     return(
         <>
@@ -21,17 +21,19 @@ const CobaltNavBar = (props) => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                    <NavDropdown title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
                     <NavDropdown.Item href="/bookings">My Bookings</NavDropdown.Item>
                     <NavDropdown.Item href="/locations">My Locations</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    {props.isLoggedIn === true ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
+                    {isLoggedIn ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
                 </NavDropdown>
 
-                </Nav>
-                <Button onClick={() => alert("This button activated")} variant="primary">Make a Booking</Button>
-                <LogInInput />
-                    
+                <Nav.Item className="ml-auto">
+                {isLoggedIn ? <Button onClick={() => alert("This button activated")} variant="primary">Make a Booking</Button> : <LogInInput />}
+                </Nav.Item>
+                
+
+                </Nav>      
             </Navbar.Collapse>
         </Navbar>
         </>
@@ -42,7 +44,7 @@ const CobaltNavBar = (props) => {
 const mapStateToProps = (state) => {
     return {
         user: state.users.user,
-        isLoggedIn: state.isLoggedIn
+        isLoggedIn: state.users.isLoggedIn
     }
 }
 

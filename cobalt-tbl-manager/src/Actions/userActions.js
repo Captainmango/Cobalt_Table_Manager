@@ -9,13 +9,15 @@ export const createNewUser = (data) => {
       })
       .then(response => response.json())
       .then(returnData => {
-        let user = {username: returnData.data.attributes.username,
+        let user = {id: returnData.data.attributes.id,
+                    username: returnData.data.attributes.username,
                     first_name: returnData.data.attributes.first_name,
                     last_name: returnData.data.attributes.last_name,
                     email_address: returnData.data.attributes.email_address,
                     mobile_number: returnData.data.attributes.mobile_number};
           localStorage.setItem("token", returnData.data.attributes.token);
         dispatch({ type: 'ADD_USER', user})});
+        alert("Signed up and logged in successfully");
       }
     }
 
@@ -36,8 +38,15 @@ export const logInUser = (username, password) => {
                         email_address: returnData.data.attributes.email_address,
                         mobile_number: returnData.data.attributes.mobile_number};
             localStorage.setItem("token", returnData.data.attributes.token);
-            dispatch({ type: "ADD_USER", user })
+            dispatch({ type: "ADD_USER", user });
+            alert("Logged in successfully");
         })
     }
 
+}
+
+export const logOutUser = () => {
+  return (dispatch) => {
+    dispatch({type: "LOGOUT_USER"})
+  }
 }
