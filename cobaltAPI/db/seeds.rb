@@ -41,25 +41,38 @@ user.save
     user.save
 end
 
-8.times do
+5.times do 
+    diner = Role.find(4)
+    user = diner.users.create(first_name: Faker::Name.first_name,
+                last_name: Faker::Name.last_name,
+                username: Faker::Internet.username,
+                password: "123456",
+                mobile_number: "+447931555501",
+                email_address: Faker::Internet.email
+                )
+    user.save
+end
+
+5.times do
     nu_loc = Location.create(name: Faker::Company.name, location_password: "123456")
-    nu_loc.users << User.find(rand(2..6))
+    nu_loc.users << User.find(rand(2))
     nu_loc.save
 end
 
 Location.all.each do |location|
     5.times do
-        table = location.tables.create(capacity: 10)
+        table = location.tables.create(capacity: table_sizes.sample)
         table.save
     end
 end
 
 
-user = User.find(1)
-location = Location.find(1)
-table = location.tables[0]
-10.times do
-    booking = user.bookings.create(location: location, table: table, datetime: rand(30.days).seconds.from_now, number_of_diners: 5, notes: Faker::Lorem.sentence)
+
+40.times do
+    user = User.find(7..13)
+    location = Location.find(rand(1..5))
+    table = location.tables[rand(0..4)]
+    booking = user.bookings.create(location: location, table: table, datetime: rand(30.days).seconds.from_now, number_of_diners: rand(2..table.capacity), notes: Faker::Lorem.sentence)
     booking.save
 end
 
