@@ -9,7 +9,8 @@ export const fetchLocations = (user_id) => {
         })
         .then(response => response.json())
         .then(returnData => {
-            dispatch({type: "ADD_LOCATIONS", locations: returnData.data})
+            let locations = returnData.data;
+            dispatch({type: "ADD_LOCATIONS", locations: locations})
         })
 
     }

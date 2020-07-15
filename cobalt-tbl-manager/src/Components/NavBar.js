@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
 import { logOutUser } from '../Actions/userActions'; 
 import { Link } from 'react-router-dom';
+import gem from '../gem.png'
 
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +19,7 @@ const CobaltNavBar = (props) => {
     return(
         <>
         <Navbar bg="light" variant="light" expand="lg">
-        <Navbar.Brand>Cobalt BM</Navbar.Brand>
+        <Navbar.Brand><img src={gem} alt="gem-logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">

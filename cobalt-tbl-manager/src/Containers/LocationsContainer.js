@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { fetchLocations } from '../Actions/locationsActions';
 import LocationsTable from '../Components/LocationsTable';
 import Spinner from '../Spinner.svg'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 export class LocationsContainer extends React.Component {
 
@@ -16,7 +19,9 @@ export class LocationsContainer extends React.Component {
         console.log(this.props.locations.requesting)
         if(this.props.requesting) {
           return <>
-          <img src={Spinner} alt="spinner" />
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+              <div><img src={Spinner} alt="spinner" /></div>
+            </div>
           </>
         } else {
           return <LocationsTable />
