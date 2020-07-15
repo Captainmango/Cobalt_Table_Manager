@@ -21,9 +21,9 @@ const CobaltNavBar = (props) => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                    <NavDropdown title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/bookings">My Bookings</NavDropdown.Item>
-                    <NavDropdown.Item href="/locations">My Locations</NavDropdown.Item>
+                    <NavDropdown className="disabled" title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
+                    <NavDropdown.Item disabled={!isLoggedIn} href="/bookings">My Bookings</NavDropdown.Item>
+                    <NavDropdown.Item disabled={!isLoggedIn} href="/locations">My Locations</NavDropdown.Item>
                     <NavDropdown.Divider />
                     {isLoggedIn ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
                 </NavDropdown>

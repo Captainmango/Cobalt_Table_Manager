@@ -31,7 +31,7 @@ export const logInUser = (username, password) => {
           body: JSON.stringify(username, password)
         })
         .then(response => response.json())
-        .then(returnData => {
+        .then(returnData => { if(!returnData.error){
             let user = {username: returnData.data.attributes.username,
                         first_name: returnData.data.attributes.first_name,
                         last_name: returnData.data.attributes.last_name,
@@ -40,6 +40,9 @@ export const logInUser = (username, password) => {
             localStorage.setItem("token", returnData.data.attributes.token);
             dispatch({ type: "ADD_USER", user });
             alert("Logged in successfully");
+        } else {
+          alert(returnData.error)
+        }
         })
     }
 
