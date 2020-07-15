@@ -3,7 +3,7 @@ function locationsReducer(state = {locations: [], requesting: false }, action){
 
         case "ADD_LOCATIONS":
             return {...state,
-                locations: action.locations,
+                locations: [action.locations],
                 requesting: false
             }
 

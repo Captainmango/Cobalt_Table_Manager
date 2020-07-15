@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Location = (props) => {
+const Location = (props) => {
     return (
     <tr>
         <td>{props.name}</td> 
@@ -10,3 +10,5 @@ export const Location = (props) => {
     </tr>
     )
 }
+
+export default Location;

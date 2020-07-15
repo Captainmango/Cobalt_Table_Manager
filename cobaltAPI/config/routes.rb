@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tables
-  resources :locations
+  get "/users/:user_id/locations", to: "locations#index"
   resources :bookings
   post "/signup", to: "users#create"
   post "/login", to: "users#login"

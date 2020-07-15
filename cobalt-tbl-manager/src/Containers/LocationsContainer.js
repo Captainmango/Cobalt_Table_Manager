@@ -1,67 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchLocations } from '../Actions/locationsActions';
+import LocationsTable from '../Components/LocationsTable';
+import Spinner from '../Spinner.svg'
 
-export class LocationsContainer extends Component {
+export class LocationsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.fetchLocations(user.id)
+        let user_id = this.props.user.id
+        console.log(this.props)
+        this.props.fetchLocations(user_id)
       }
       
       handleLoading = () => {
-        console.log(this.props.loading)
+        console.log(this.props.locations.requesting)
         if(this.props.requesting) {
-          return <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-          <g transform="rotate(0 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(30 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(60 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(90 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(120 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(150 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(180 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(210 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(240 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(270 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(300 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"/>
-            </rect>
-          </g><g transform="rotate(330 50 50)">
-            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#0a69aa">
-              <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"/>
-            </rect>
-          </g>
-          </svg>
+          return <>
+          <img src={Spinner} alt="spinner" />
+          </>
         } else {
           return <LocationsTable />
         }
@@ -78,16 +34,19 @@ export class LocationsContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+    return {
     locations: state.locations,
-    user: state.user,
-    requesting: state.location.requesting
-    
-})
-
-const mapDispatchToProps = {
-    fetchLocations: (user_id) => {dispatchEvent(fetchLocations(user_id))}
-    
+    user: state.users.user,
+    requesting: state.locations.requesting
+    }   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+    fetchLocations: (user_id) => {dispatch(fetchLocations(user_id))
+    }
+}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer);

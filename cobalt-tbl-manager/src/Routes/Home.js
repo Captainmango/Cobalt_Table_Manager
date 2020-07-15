@@ -3,6 +3,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 
 
 
+
 const Home = () => {
     return (
         <Jumbotron>
@@ -13,7 +14,10 @@ const Home = () => {
                 locations and bookings by using the options on the top right of the screen. Making an account is simple, just click the dropdwon menu
                  to get started.
             </p>
+            
         </Jumbotron>
+        
+
     )
 }
 

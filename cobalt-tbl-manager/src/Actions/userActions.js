@@ -9,7 +9,7 @@ export const createNewUser = (data) => {
       })
       .then(response => response.json())
       .then(returnData => {
-        let user = {id: returnData.data.attributes.id,
+        let user = {id: returnData.data.id,
                     username: returnData.data.attributes.username,
                     first_name: returnData.data.attributes.first_name,
                     last_name: returnData.data.attributes.last_name,
@@ -32,7 +32,8 @@ export const logInUser = (username, password) => {
         })
         .then(response => response.json())
         .then(returnData => { if(!returnData.error){
-            let user = {username: returnData.data.attributes.username,
+            let user = {id: returnData.data.id,
+                        username: returnData.data.attributes.username,
                         first_name: returnData.data.attributes.first_name,
                         last_name: returnData.data.attributes.last_name,
                         email_address: returnData.data.attributes.email_address,

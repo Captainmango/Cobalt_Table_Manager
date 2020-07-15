@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import Location from './Location'
+import Table from 'react-bootstrap/Table'
 
-export const LocationsTable = () => {
-    locationsList = () => { 
+const LocationsTable = (props) => {
+    const locationsList = () => { 
         return props.locations.map((location, index) => <Location
         id={index} 
-            name={reservation.name}
-            owner={reservation.owner.first_name}
-            number={reservation.owner.mobile_number}
-            email={reservation.owner.email_address}/>)
+            name={location.name}
+            owner={location.owner.first_name}
+            number={location.owner.mobile_number}
+            email={location.owner.email_address}/>)
     }
 
     return (
@@ -38,4 +40,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps)(LocationsTable)
+export default connect(mapStateToProps)(LocationsTable);

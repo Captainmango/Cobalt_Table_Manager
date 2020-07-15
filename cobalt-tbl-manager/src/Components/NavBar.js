@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
 import { logOutUser } from '../Actions/userActions'; 
+import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,14 +18,14 @@ const CobaltNavBar = (props) => {
     return(
         <>
         <Navbar bg="light" variant="light" expand="lg">
-        <Navbar.Brand href="/">Cobalt BM</Navbar.Brand>
+        <Navbar.Brand>Cobalt BM</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
+                <Navbar.Brand><Link to= "/">Home</Link></Navbar.Brand>
                     <NavDropdown className="disabled" title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
-                    <NavDropdown.Item disabled={!isLoggedIn} href="/bookings">My Bookings</NavDropdown.Item>
-                    <NavDropdown.Item disabled={!isLoggedIn} href="/locations">My Locations</NavDropdown.Item>
+                    <NavDropdown.Item disabled={!isLoggedIn}><Link to="/bookings">My Bookings</Link></NavDropdown.Item>
+                    <NavDropdown.Item disabled={!isLoggedIn}><Link to="/locations">My Locations</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     {isLoggedIn ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
                 </NavDropdown>
