@@ -55,7 +55,7 @@ end
 
 5.times do
     nu_loc = Location.create(name: Faker::Company.name, location_password: "123456")
-    nu_loc.users << User.find(rand(2))
+    nu_loc.users << User.find(2)
     nu_loc.save
 end
 
@@ -69,7 +69,7 @@ end
 
 
 40.times do
-    user = User.find(7..13)
+    user = User.find(rand(7..11)
     location = Location.find(rand(1..5))
     table = location.tables[rand(0..4)]
     booking = user.bookings.create(location: location, table: table, datetime: rand(30.days).seconds.from_now, number_of_diners: rand(2..table.capacity), notes: Faker::Lorem.sentence)
