@@ -11,12 +11,10 @@ export class LocationsContainer extends React.Component {
 
     componentDidMount() {
         let user_id = this.props.user.id
-        console.log(this.props)
         this.props.fetchLocations(user_id)
       }
       
       handleLoading = () => {
-        console.log(this.props.locations.requesting)
         if(this.props.requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>
