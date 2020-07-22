@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :tables
   get "/users/:user_id/locations", to: "locations#index"
-  resources :bookings
+  get "/users/:user_id/bookings", to: "bookings#index"
+
+  get "/users/:user_id/locations/:location_id/tables", to: "tables#index"
+  
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
   get "/auto_login", to: "users#auto_login"
