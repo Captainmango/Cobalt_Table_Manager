@@ -8,7 +8,6 @@ import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import gem from '../gem.png'
 
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 
@@ -26,13 +25,14 @@ const CobaltNavBar = (props) => {
                 <Nav className="mr-auto">
                 <Navbar.Brand><NavLink to= "/">Home</NavLink></Navbar.Brand>
                     <NavDropdown disabled={!isLoggedIn} title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
-                    <NavLink to="/bookings">My Bookings</NavLink>
-                    <NavLink to="/locations" >My Locations</NavLink>                    
+                    <NavLink to="/bookings">My Bookings</NavLink> <br />
+                    <NavLink to="/locations" >My Locations</NavLink> <br />
+                    <NavLink to="/bookings/new" >Make A Booking</NavLink>                     
                 </NavDropdown>
                 {isLoggedIn ? <NavLink to="/logout">Log out</NavLink> : <NavLink to="/Signup">Sign up</NavLink>}
 
                 <Nav.Item className="ml-auto">
-                {isLoggedIn ? <Button onClick={() => alert("This button activated")} variant="primary">Make a Booking</Button> : <LogInInput />}
+                {isLoggedIn ? <NavLink to="/bookings/new">Make a Booking</NavLink> : <LogInInput />}
                 </Nav.Item>
                 
 

@@ -5,7 +5,7 @@ import NavBar from './Components/NavBar';
 import Home from './Routes/Home'
 import Signup from './Routes/Signup'
 import Locations from './Routes/Locations'
-import { BookingInput } from './Containers/Forms/BookingInput';
+import NewBooking from './Routes/NewBooking';
 
 export class App extends React.Component {
   render() {
@@ -19,7 +19,7 @@ export class App extends React.Component {
           <Route exact path="/locations" component={Locations} />
           <Route exact path="/signup" component={Signup}/>
           <Route exact path="/logout" component={Home} />
-          <Route exact path="/bookings/new" component={BookingInput} />
+          <Route exact path="/bookings/new" component={NewBooking} />
         </>
       </Switch>
       </Router>

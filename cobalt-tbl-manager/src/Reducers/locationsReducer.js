@@ -7,7 +7,14 @@ function locationsReducer(state = {locations: [], requesting: false }, action){
                 requesting: false
             }
 
-        case "FETCH_LOCATIONS":
+        case "FETCH_MY_LOCATIONS":
+            return {
+                ...state,
+                locations: [...state.locations],
+                requesting: true
+            }
+
+        case "FETCH_ALL_LOCATIONS":
             return {
                 ...state,
                 locations: [...state.locations],

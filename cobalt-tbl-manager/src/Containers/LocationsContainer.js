@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchLocations } from '../Actions/locationsActions';
+import { fetchMyLocations } from '../Actions/locationsActions';
 import LocationsTable from '../Components/LocationsTable';
 import Spinner from '../Spinner.svg'
 
@@ -8,8 +8,10 @@ export class LocationsContainer extends React.Component {
 
     componentDidMount() {
         let user_id = this.props.user.id
-        this.props.fetchLocations(user_id)
+        this.props.fetchMyLocations(user_id)
       }
+
+      
       
       handleLoading = () => {
         if(this.props.requesting) {
@@ -22,9 +24,9 @@ export class LocationsContainer extends React.Component {
           return <LocationsTable />
         }
       }
-
     render() {
         return (
+          
             <div>
                 <h1>My Locations</h1>
                 <br />
@@ -44,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    fetchLocations: (user_id) => {dispatch(fetchLocations(user_id))
+    fetchMyLocations: (user_id) => {dispatch(fetchMyLocations(user_id))
     }
 }
 }
