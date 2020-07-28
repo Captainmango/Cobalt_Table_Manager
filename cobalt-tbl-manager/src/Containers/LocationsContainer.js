@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { fetchLocations } from '../Actions/locationsActions';
 import LocationsTable from '../Components/LocationsTable';
 import Spinner from '../Spinner.svg'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 export class LocationsContainer extends React.Component {
 

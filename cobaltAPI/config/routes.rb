@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :tables
-  get "/users/:user_id/locations", to: "locations#index"
+  get "/users/:user_id/locations", to: "locations#my_locations"
+  get "/locations", to: "locations#index"
+  
   get "/users/:user_id/bookings", to: "bookings#index"
   post "/users/:user_id/bookings", to: "bookings#create"
 

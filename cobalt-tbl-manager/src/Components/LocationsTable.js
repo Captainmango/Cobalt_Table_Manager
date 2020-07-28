@@ -20,7 +20,7 @@ const LocationsTable = (props) => {
         <div>
             <Container>
                 <Row>
-        <Col sm={{ size: 6, order: 2, offset: 1 }}><h1 className="text-center"></h1></Col>
+        <Col sm={{ size: 6, order: 2, offset: 1 }}></Col>
       </Row>
             
             <Table size="sm" striped bordered hover variant="dark">

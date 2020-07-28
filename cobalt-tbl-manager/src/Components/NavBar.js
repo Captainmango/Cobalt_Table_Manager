@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
 import { logOutUser } from '../Actions/userActions'; 
+import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import gem from '../gem.png'
 
@@ -23,13 +24,12 @@ const CobaltNavBar = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                <Navbar.Brand><Link to= "/">Home</Link></Navbar.Brand>
-                    <NavDropdown className="disabled" title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
-                    <NavDropdown.Item disabled={!isLoggedIn}><Link to="/bookings">My Bookings</Link></NavDropdown.Item>
-                    <NavDropdown.Item disabled={!isLoggedIn}><Link to="/locations">My Locations</Link></NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    {isLoggedIn ? <NavDropdown.Item href="/logout">Log out</NavDropdown.Item> : <NavDropdown.Item href="/Signup">Sign up</NavDropdown.Item>}
+                <Navbar.Brand><NavLink to= "/">Home</NavLink></Navbar.Brand>
+                    <NavDropdown disabled={!isLoggedIn} title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
+                    <NavLink to="/bookings">My Bookings</NavLink>
+                    <NavLink to="/locations" >My Locations</NavLink>                    
                 </NavDropdown>
+                {isLoggedIn ? <NavLink to="/logout">Log out</NavLink> : <NavLink to="/Signup">Sign up</NavLink>}
 
                 <Nav.Item className="ml-auto">
                 {isLoggedIn ? <Button onClick={() => alert("This button activated")} variant="primary">Make a Booking</Button> : <LogInInput />}
