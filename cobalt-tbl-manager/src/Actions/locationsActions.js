@@ -10,7 +10,7 @@ export const fetchMyLocations = (user_id) => {
         .then(response => response.json())
         .then(returnData => {
             let locations = returnData.data;
-            dispatch({type: "ADD_LOCATIONS", locations: locations})
+            dispatch({type: "ADD_MY_LOCATIONS", myLocations: locations})
         })
 
     }
@@ -33,3 +33,10 @@ export const fetchAllLocations = () => {
 
     }
 }
+
+export const deleteLocations = () => {
+    return (dispatch) => {
+      dispatch({type: "DELETE_LOCATIONS"})
+    }
+  }
+  

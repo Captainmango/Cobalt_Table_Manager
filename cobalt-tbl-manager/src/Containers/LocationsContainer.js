@@ -10,9 +10,9 @@ export class LocationsContainer extends React.Component {
         let user_id = this.props.user.id
         this.props.fetchMyLocations(user_id)
       }
+      
 
-      
-      
+
       handleLoading = () => {
         if(this.props.requesting) {
           return <>
@@ -38,7 +38,7 @@ export class LocationsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-    locations: state.locations,
+    locations: state.locations.locations,
     user: state.users.user,
     requesting: state.locations.requesting
     }   
@@ -46,8 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    fetchMyLocations: (user_id) => {dispatch(fetchMyLocations(user_id))
-    }
+    fetchMyLocations: (user_id) => {dispatch(fetchMyLocations(user_id))}
 }
 }
 

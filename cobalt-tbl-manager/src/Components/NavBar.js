@@ -5,7 +5,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
 import { logOutUser } from '../Actions/userActions'; 
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import gem from '../gem.png'
 
 import 'bootstrap/dist/css/bootstrap.min.css';

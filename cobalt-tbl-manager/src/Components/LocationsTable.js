@@ -7,21 +7,14 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
 const LocationsTable = (props) => {
-    const locationsList = () => { 
-        return props.locations.map((location, index) => <Location
-        id={index} 
-            name={location.attributes.name}
-            owner={location.attributes.owners[0].first_name}
-            number={location.attributes.owners[0].mobile_number}
-            email={location.attributes.owners[0].email_address}/>)
-    }
-
+    
     return (
         <div>
             <Container>
                 <Row>
         <Col sm={{ size: 6, order: 2, offset: 1 }}></Col>
       </Row>
+      {console.log(props.myLocations.length)}
             
             <Table size="sm" striped bordered hover variant="dark">
                 <thead>
@@ -33,7 +26,16 @@ const LocationsTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {locationsList()}
+                    { props.myLocations && props.myLocations.length > 0 ? 
+                        props.myLocations.map((location, index) => <Location
+                        key={index}
+                        id={index} 
+                            name={location.attributes.name}
+                            owner={location.attributes.owners[0].first_name}
+                            number={location.attributes.owners[0].mobile_number}
+                     email={location.attributes.owners[0].email_address}/>)
+
+                    : console.log("loading")}
                 </tbody>
             
             </Table>
@@ -43,7 +45,8 @@ const LocationsTable = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    locations: state.locations.locations
+    myLocations: state.locations.myLocations,
+    user: state.users.user
 
     
 })
