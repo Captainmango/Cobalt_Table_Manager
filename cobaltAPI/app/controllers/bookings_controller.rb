@@ -13,10 +13,22 @@ class BookingsController < ApplicationController
         nu_booking.location = location
         nu_booking.table = table
         nu_booking.save
+        send_message(@user.mobile_number, "You've created a booking at #{location.name} to start at #{nu_booking.datetime}. We look forward to seeing you :)")
         render json: BookingsSerializer.new(nu_booking).serialized_json
     end
 
     private
+
+    def send_message(phone_number, alert_message)
+        @twilio_number = ENV['TWIL_NUMBER']
+        @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+            
+            message = @client.messages.create(
+              :from => @twilio_number,
+              :to => phone_number,
+              :body => alert_message,
+            )
+    end
 
     def find_user
         @user = User.find_by(id: booking_params[:user_id])
