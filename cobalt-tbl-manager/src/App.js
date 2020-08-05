@@ -7,6 +7,8 @@ import Signup from './Routes/Signup'
 import Locations from './Routes/Locations'
 import NewBooking from './Routes/NewBooking';
 import Bookings from './Routes/Bookings';
+import { connect } from 'react-redux';
+import { logOutUser } from "./Actions/userActions"
 
 export class App extends React.Component {
   render() {
@@ -19,7 +21,7 @@ export class App extends React.Component {
           <Route exact path="/bookings" component={Bookings} />
           <Route exact path="/locations" component={Locations} />
           <Route exact path="/signup" component={Signup}/>
-          <Route exact path="/logout" component={Home} />
+          <Route exact path="/logout" render={() => this.props.logout()} />
           <Route exact path="/bookings/new" component={NewBooking} />
         </>
       </Switch>
@@ -28,5 +30,11 @@ export class App extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+      logout: () => {dispatch(logOutUser())}
+  }
+}
 
-export default App;
+
+export default connect(null, mapDispatchToProps)(App);
