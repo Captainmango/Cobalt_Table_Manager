@@ -7,9 +7,12 @@ class BookingsController < ApplicationController
     end
 
     def create
-        location = Location.find_by(id: location_id)
-        table = Table.find_by(id: table_id)
+        location = Location.find_by(id: booking_params[:location_id])
+        table = location.tables.where("capacity >= '#{booking_params[:number_of_diners]}'")[0]
         nu_booking = user.bookings.create(booking_params.except(:user_id, :location_id, :table_id))
+        nu_booking.location = location
+        nu_booking.table = table
+        nu_booking.save
         render json: BookingsSerializer.new(nu_booking).serialized_json
     end
 

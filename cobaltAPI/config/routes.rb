@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   
   get "/users/:user_id/bookings", to: "bookings#index"
   post "/users/:user_id/bookings", to: "bookings#create"
-
-  get "/users/:user_id/locations/:location_id/tables", to: "tables#index"
   
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
