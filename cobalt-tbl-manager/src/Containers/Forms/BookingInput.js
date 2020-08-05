@@ -13,7 +13,7 @@ import Spinner from '../../Spinner.svg'
 export class BookingInput extends React.Component {
 
     state = {
-        user: this.props.user.id,
+        user_id: this.props.user.id,
         location:"",
         datetime:"",
         number_of_diners:"",
@@ -35,7 +35,7 @@ export class BookingInput extends React.Component {
         event.preventDefault();
         this.props.createBooking(this.props.user.id, this.state);
         this.setState({
-            user: this.props.user.id,
+            user_id: this.props.user.id,
             location:"",
             datetime:"",
             number_of_diners:"",

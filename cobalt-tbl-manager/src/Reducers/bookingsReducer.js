@@ -3,7 +3,7 @@ function bookingsReducer(state = {bookings: [], requesting: false }, action){
 
         case "ADD_BOOKINGS":
             return {...state,
-                bookings: [action.bookings],
+                bookings: [...action.bookings],
                 requesting: false
             }
 
@@ -17,8 +17,14 @@ function bookingsReducer(state = {bookings: [], requesting: false }, action){
         case "POST_BOOKING":
             return {
                 ...state,
-                booking: [action.booking],
+                bookings: action.booking,
                 requesting: true
+            }
+
+        case "ADD_NU_BOOKINGS":
+            return {...state,
+                bookings: action.bookings,
+                requesting: false
             }
 
         default:

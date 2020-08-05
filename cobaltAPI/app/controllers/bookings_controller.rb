@@ -7,11 +7,10 @@ class BookingsController < ApplicationController
     end
 
     def create
-        location = Location.find_by(id: booking_params[:location_id])
+        user = User.find_by(id: booking_params[:user_id])
+        location = Location.find_by(name: booking_params[:location])
         table = location.tables.where("capacity >= '#{booking_params[:number_of_diners]}'")[0]
-        nu_booking = user.bookings.create(booking_params.except(:user_id, :location_id, :table_id))
-        nu_booking.location = location
-        nu_booking.table = table
+        nu_booking = user.bookings.create(booking_params.except(:user_id, :location), location: location, table: table)
         nu_booking.save
         render json: BookingsSerializer.new(nu_booking).serialized_json
     end
@@ -24,8 +23,7 @@ class BookingsController < ApplicationController
 
     def booking_params
         params.permit(:user_id,
-                      :location_id,
-                      :table_id,
+                      :location,
                       :datetime,
                       :number_of_diners,
                       :notes)

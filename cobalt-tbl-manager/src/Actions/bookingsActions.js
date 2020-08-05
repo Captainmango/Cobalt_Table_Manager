@@ -29,7 +29,7 @@ export const postBooking = (user_id, booking) => {
         .then(response => response.json())
             .then(returnData => {
                 let booking = returnData.data;
-                dispatch({type: "ADD_BOOKINGS", bookings: booking})
+                dispatch({type: "ADD_NU_BOOKINGS", bookings: booking})
         })
     }
 }
