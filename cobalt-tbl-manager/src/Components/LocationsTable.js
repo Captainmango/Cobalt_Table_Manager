@@ -14,7 +14,6 @@ const LocationsTable = (props) => {
                 <Row>
         <Col sm={{ size: 6, order: 2, offset: 1 }}></Col>
       </Row>
-      {console.log(props.myLocations.length)}
             
             <Table size="sm" striped bordered hover variant="dark">
                 <thead>
