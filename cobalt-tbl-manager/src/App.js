@@ -6,6 +6,7 @@ import Home from './Routes/Home'
 import Signup from './Routes/Signup'
 import Locations from './Routes/Locations'
 import NewBooking from './Routes/NewBooking';
+import Bookings from './Routes/Bookings';
 
 export class App extends React.Component {
   render() {
@@ -15,7 +16,7 @@ export class App extends React.Component {
         <>
           <NavBar/>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/bookings" render={()=> <h2><b>This is a test for the bookings route</b></h2>} />
+          <Route exact path="/bookings" component={Bookings} />
           <Route exact path="/locations" component={Locations} />
           <Route exact path="/signup" component={Signup}/>
           <Route exact path="/logout" component={Home} />
