@@ -1,18 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Button from 'react-bootstrap/esm/Button'
-import { Link } from 'react-router-dom'
 import { logOutUser } from '../Actions/userActions'
+import { Redirect } from 'react-router-dom'
 
-export const Logout = (props) => {
-    const isLoggedIn = props.isLoggedIn
-    debugger
-    return (
-        <>
-        {isLoggedIn ? "" : <Button onClick={props.logout()}>Log out</Button>}
-            
-        </>
-    )
+export class Logout extends React.Component {
+
+  componentWillMount() {
+    this.handleLogout()
+  }
+
+  handleLogout = () => {
+    this.props.logout()
+  }
+
+  render() {
+      return (
+    <Redirect to="/" />
+      )
+  }
 }
 
 const mapStateToProps = (state) => {

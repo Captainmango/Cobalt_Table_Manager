@@ -30,7 +30,7 @@ const BookingsTable = (props) => {
                         id={index} 
                             name={booking.attributes.location.name}
                             number_of_diners={booking.attributes.number_of_diners}
-                            date={Date(Date.parse(booking.attributes.datetime))}/>)
+                            date={new Date(booking.attributes.datetime).toString()}/>)
 
                     : console.log("loading")}
                 </tbody>

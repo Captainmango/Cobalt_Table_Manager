@@ -50,12 +50,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        logout: () => {dispatch(logOutUser())}
-    }
-}
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CobaltNavBar);
+export default connect(mapStateToProps)(CobaltNavBar);

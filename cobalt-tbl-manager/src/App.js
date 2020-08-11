@@ -9,7 +9,7 @@ import NewBooking from './Routes/NewBooking';
 import Bookings from './Routes/Bookings';
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
-import { Logout } from './Routes/Logout';
+import Logout from './Routes/Logout';
 
 export class App extends React.Component {
   render() {
