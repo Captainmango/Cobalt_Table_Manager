@@ -1,4 +1,5 @@
 function bookingsReducer(state = {bookings: [], requesting: false }, action){
+    console.log(13)
     switch (action.type){
 
         case "ADD_BOOKINGS":

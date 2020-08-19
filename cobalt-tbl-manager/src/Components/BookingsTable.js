@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import LikesCounter from './LikesCounter'
 
 const BookingsTable = (props) => {
     
@@ -21,6 +22,7 @@ const BookingsTable = (props) => {
                     <th>Restaurant name</th>
                     <th>Number of diners</th>
                     <th>Date</th>
+                    <th>Like/ Dislike</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +32,8 @@ const BookingsTable = (props) => {
                         id={index} 
                             name={booking.attributes.location.name}
                             number_of_diners={booking.attributes.number_of_diners}
-                            date={new Date(booking.attributes.datetime).toString()}/>)
+                            date={new Date(booking.attributes.datetime).toString()}
+                    likes={<LikesCounter />}/>)
 
                     : console.log("loading")}
                 </tbody>

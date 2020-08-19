@@ -3,7 +3,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
-import { logOutUser } from '../Actions/userActions'; 
 import { NavLink } from 'react-router-dom';
 import gem from '../gem.png'
 

@@ -17,6 +17,7 @@ export const fetchMyBookings = (user_id) => {
 }
 
 export const postBooking = (user_id, booking) => {
+    console.log(9)
     return (dispatch) => {
         dispatch({type: "POST_BOOKING"});
         fetch(`http://localhost:3001/users/${user_id}/bookings`, {
@@ -30,7 +31,10 @@ export const postBooking = (user_id, booking) => {
             .then(returnData => {
                 let booking = returnData.data;
                 dispatch({type: "ADD_NU_BOOKINGS", bookings: booking})
+                console.log(10)
                 alert("Booking created successfully");
         })
+        console.log(11)
     }
+    console.log(12)
 }
