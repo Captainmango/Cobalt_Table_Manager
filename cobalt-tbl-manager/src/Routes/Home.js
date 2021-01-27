@@ -6,7 +6,7 @@ import { Jumbotron, Container } from 'react-bootstrap';
 
 const Home = () => {
     return (
-        <Container className="mt-3 container-lg">
+        <Container className="mt-5 container-lg">
             <Jumbotron className="bg-info">
                 <h1> Welcome to Cobalt Table Manager</h1>
                 <p>
@@ -16,6 +16,7 @@ const Home = () => {
                     to get started.
                 </p>
                 
+                {window.flash("We made a flash", "Flash Message", "primary")}
             </Jumbotron>
         </Container>
         
