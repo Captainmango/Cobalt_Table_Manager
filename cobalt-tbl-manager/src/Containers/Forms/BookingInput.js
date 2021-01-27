@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 import { fetchAllLocations } from '../../Actions/locationsActions'
 import { postBooking } from '../../Actions/bookingsActions'
 import { LocationOption } from '../../Components/LocationOption';
-import Spinner from '../../Spinner.svg'
+import Spinner from '../../icons/Spinner.svg';
 
 export class BookingInput extends React.Component {
 

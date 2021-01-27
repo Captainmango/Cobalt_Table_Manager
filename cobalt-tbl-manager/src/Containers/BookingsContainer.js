@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchMyBookings } from '../Actions/bookingsActions';
 import BookingsTable from '../Components/BookingsTable';
-import Spinner from '../Spinner.svg'
+import Spinner from '../icons/Spinner.svg';
 
 export class LocationsContainer extends React.Component {
 
