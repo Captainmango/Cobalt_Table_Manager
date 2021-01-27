@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LogInInput from '../Containers/Forms/LogInInput'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import logo from '../icons/logo.png';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,20 +16,20 @@ const CobaltNavBar = (props) => {
 
     return(
         <>
-        <Navbar bg="light" variant="light" expand="lg">
+        <Navbar collapseOnSelect className="justify-content-center" bg="light" variant="light" expand="lg">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="justify-content-center">
-                <Navbar.Brand><NavLink to= "/"><img src={logo} alt="cobalt-logo" /> Home</NavLink></Navbar.Brand>
+            <Navbar.Collapse className="justify-content-center" id="basic-navbar-nav">
+                <Nav variant="tabs" className="justify-content-center">
+                <Navbar.Brand><Link to= "/"><img src={logo} alt="cobalt-logo"/> Cobalt</Link></Navbar.Brand>
                     <NavDropdown disabled={!isLoggedIn} title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
                     <NavLink to="/bookings">My Bookings</NavLink> <br />
                     <NavLink to="/locations" >My Locations</NavLink> <br />
                     <NavLink to="/bookings/new" >Make A Booking</NavLink>                     
                 </NavDropdown>
-                {isLoggedIn ? <NavLink className="ml-3 align-self-center" to="/logout">Log out</NavLink> : <NavLink className="ml-3" to="/Signup">Sign up</NavLink>}
+                {isLoggedIn ? <NavLink className="ml-3 align-self-center" to="/logout">Log out</NavLink> : <NavLink className="ml-3 align-self-center" to="/Signup">Sign up</NavLink>}
 
-                <Nav.Item className="ml-3">
-                {isLoggedIn ? <NavLink className="ml-3" to="/bookings/new">Make a Booking</NavLink> : <LogInInput className="ml-3" />}
+                <Nav.Item className="ml-3 align-self-center">
+                {isLoggedIn ? <Nav.Link className="ml-3" to="/bookings/new">Make a Booking</Nav.Link> : <LogInInput />}
                 </Nav.Item>
                 
                 </Nav>      
