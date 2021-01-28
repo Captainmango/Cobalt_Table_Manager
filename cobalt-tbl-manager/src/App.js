@@ -9,7 +9,9 @@ import Bookings from './Routes/Bookings';
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
 import Logout from './Routes/Logout';
-import Flash from './Components/Flash';
+import ToastContainer from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 export class App extends React.Component {
@@ -24,7 +26,7 @@ export class App extends React.Component {
             <>
             <button onClick={ (event) => {event.preventDefault(); window.flash("test", "test", "primary")}}>me </button>
               <NavBar/>
-              <Flash />
+              <ToastContainer />
               <Route exact path="/" component={Home}/>
               <Route exact path="/bookings" component={Bookings} />
               <Route exact path="/locations" component={Locations} />
