@@ -9,10 +9,8 @@ import Bookings from './Routes/Bookings';
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
 import Logout from './Routes/Logout';
-import Bus from './utils/Bus';
 import Flash from './Components/Flash';
 
-window.flash = (message, title, type="success") => Bus.emit('flash', ({message, title, type}));
 
 export class App extends React.Component {
   
