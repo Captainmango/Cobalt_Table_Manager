@@ -5,7 +5,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { logInUser } from '../../Actions/userActions';
 import Button from 'react-bootstrap/Button';
-import { addFlashMessage } from '../../Actions/flashMessageActions';
+import { toast } from 'react-toastify';
+
 
 
 class LogInInput extends Component {
@@ -72,7 +73,6 @@ class LogInInput extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         logIn: (user) => dispatch(logInUser(user)),
-        addFlashMessage: (title, message, alertType) => dispatch(addFlashMessage(title, message, alertType))
     }
 }
 export default connect(null, mapDispatchToProps)(LogInInput)

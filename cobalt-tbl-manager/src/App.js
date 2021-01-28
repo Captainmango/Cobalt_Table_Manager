@@ -9,14 +9,12 @@ import Bookings from './Routes/Bookings';
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
 import Logout from './Routes/Logout';
-import ToastContainer from 'react-toastify';
+import {ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 
 
-export class App extends React.Component {
-  
-  render() {
+export const App = () => {
     
     return (
       
@@ -24,8 +22,8 @@ export class App extends React.Component {
         <Router>
           <Switch>
             <>
-            <button onClick={ (event) => {event.preventDefault(); window.flash("test", "test", "primary")}}>me </button>
               <NavBar/>
+              
               <ToastContainer />
               <Route exact path="/" component={Home}/>
               <Route exact path="/bookings" component={Bookings} />
@@ -41,7 +39,7 @@ export class App extends React.Component {
     
     )
   }
-}
+
 
 
 
