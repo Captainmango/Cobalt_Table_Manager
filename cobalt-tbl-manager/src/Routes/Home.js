@@ -2,8 +2,6 @@ import React from 'react';
 import { Jumbotron, Container } from 'react-bootstrap';
 
 
-
-
 const Home = () => {
     return (
         <Container className="mt-5 container-lg">
@@ -16,7 +14,6 @@ const Home = () => {
                     to get started.
                 </p>
                 
-                {window.flash("We made a flash", "Flash Message", "primary")}
             </Jumbotron>
         </Container>
         
