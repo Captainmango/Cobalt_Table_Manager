@@ -5,9 +5,11 @@
 //     }
 //   }
 
-export const addFlashMessage = (title, message, ) => {
+export const addFlashMessage = (title, message, alertType) => {
     return {
         type: ADD_FLASH_MESSAGE,
-        message:
+        title: title,
+        message: message,
+        alertType: alertType
     }
 }

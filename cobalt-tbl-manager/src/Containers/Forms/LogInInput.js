@@ -4,7 +4,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { logInUser } from '../../Actions/userActions';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import { addFlashMessage } from '../../Actions/flashMessageActions';
 
 
 class LogInInput extends Component {
@@ -24,6 +25,7 @@ class LogInInput extends Component {
       handleOnSubmit(event) {
         event.preventDefault();
         this.props.logIn(this.state);
+        this.props.addFlashMessage("Success","You've been signed in","success");
         this.setState({
             username: "",
             password: ""
@@ -69,7 +71,8 @@ class LogInInput extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        logIn: (user) => dispatch(logInUser(user))
+        logIn: (user) => dispatch(logInUser(user)),
+        addFlashMessage: (title, message, alertType) => dispatch(addFlashMessage(title, message, alertType))
     }
 }
 export default connect(null, mapDispatchToProps)(LogInInput)

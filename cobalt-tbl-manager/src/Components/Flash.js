@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import Bus from '../utils/Bus';
+import { connect } from 'react-redux';
 
-const Flash = (title, message, alertType) => {
+const Flash = () => {
   
-    let [visibility, setVisibility] = useState(false);
 //use FlashMessage package to wrap the alert and use same syntax. Maybe break visibility state into Redux?
 
     return (
-        visibility && <Alert style={{position: 'fixed', width: '100%'}} variant={alertType} onClose={ () => { setVisibility(false) } } dismissible>
-            <Alert.title>{title}</Alert.title>
-            <p>{message}</p>
-        </Alert>
+        <FlashMessage>
+            <Alert style={{position: 'fixed', width: '100%'}} variant={messages.alertType} onClose={ () => { setVisibility(false) } } dismissible transition>
+                <Alert.title>{messages.title}</Alert.title>
+                <p>{messages.message}</p>
+            </Alert>
+        </FlashMessage>
     )
 }
 
-export default Flash;
+const mapStateToProps = (state) => (
+    {
+        messages: state.flashMessages
+    }
+)
+
+export default connect(mapStateToProps)(Flash);

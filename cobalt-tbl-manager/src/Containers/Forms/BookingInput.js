@@ -33,9 +33,7 @@ export class BookingInput extends React.Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
-        console.log(5)
         this.props.createBooking(this.props.user.id, this.state);
-        console.log(6)
         this.setState({
             user_id: this.props.user.id,
             location:"",
@@ -43,12 +41,10 @@ export class BookingInput extends React.Component {
             number_of_diners:"",
             notes: ""
         });
-        console.log(7)
     }
        
 
     render() {
-        console.log(8)
         if(this.props.requesting) {
             return <>
               <div style={{display: 'flex', justifyContent: 'center'}}>

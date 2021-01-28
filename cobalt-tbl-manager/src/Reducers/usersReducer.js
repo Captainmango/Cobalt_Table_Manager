@@ -1,3 +1,5 @@
+// get some ES6 in here and make into user reducer. remove user object from state as this is what is causing the need for weird shit
+
 function usersReducer(state = {user: {}, isLoggedIn: false, requesting: false}, action){
     switch (action.type){
 
