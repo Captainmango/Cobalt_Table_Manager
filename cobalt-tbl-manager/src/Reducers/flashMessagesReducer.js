@@ -1,6 +1,6 @@
 import shortid from 'shortid';
 
-export default function flashMessagesReducer(state={}, action = {}) {
+export default function flashMessageReducer(state={}, action = {}) {
     switch (action.type){
         case ADD_FLASH_MESSAGE:
             return {
