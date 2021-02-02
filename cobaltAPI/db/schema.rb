@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_07_07_130300) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookings", force: :cascade do |t|
-    t.integer "location_id"
-    t.integer "user_id"
-    t.integer "table_id"
+    t.bigint "location_id"
+    t.bigint "user_id"
+    t.bigint "table_id"
     t.string "datetime"
     t.integer "number_of_diners"
     t.string "notes"
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.integer "users_id"
+    t.bigint "users_id"
     t.string "name"
     t.string "location_password"
     t.datetime "created_at", null: false
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
   end
 
   create_table "tables", force: :cascade do |t|
-    t.integer "location_id"
+    t.bigint "location_id"
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,9 +65,9 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
     t.string "password_digest"
     t.string "mobile_number"
     t.string "email_address"
-    t.integer "role_id"
-    t.integer "location_id"
-    t.integer "table_id"
+    t.bigint "role_id"
+    t.bigint "location_id"
+    t.bigint "table_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_users_on_location_id"
