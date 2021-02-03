@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :tables
   get "/users/:user_id/locations", to: "locations#my_locations"
   get "/locations", to: "locations#index"
