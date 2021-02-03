@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
-    belongs_to :users
-    belongs_to :restaurants
+    belongs_to :user
+    belongs_to :restaurant
 
-    validates_presence_of :diners, :time
+    validates_presence_of :diners, :time, :restaurant_id
 end
