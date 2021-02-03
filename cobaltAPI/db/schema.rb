@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_123903) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "img"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2021_02_03_123903) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "email_addresss"
+    t.string "password_digest"
+    t.string "email_address"
     t.string "mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

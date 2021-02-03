@@ -19,16 +19,17 @@ admin.save
 10.times do
     nu_restaurant = Restaurant.create(name: Faker::Company.name,
                       address: Faker::Address.full_address,
-                      img: "https://source.unsplash.com/collection/4173854")
+                      image: "https://source.unsplash.com/collection/4173854")
     nu_restaurant.save
 end
 
 20.times do
-    restaurant = Restaurant.find(rand(0..9))
-    nu_reservation = admin.reservations.create(restaurant: restaurant, 
+    restaurant = Restaurant.find(rand(1..10))
+    nu_reservation = admin.reservations.create(restaurant_id: restaurant.id, 
                                                diners: rand(2..8), 
                                                time: rand(30.days).seconds.from_now, 
                                                rating: rand(2..5))
+    nu_reservation.save
 end
 
 
