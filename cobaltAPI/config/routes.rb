@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reservations
+  resources :restaurants
   resources :users
   resources :tables
   get "/users/:user_id/locations", to: "locations#my_locations"
