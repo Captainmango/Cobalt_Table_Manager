@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
 
     before_action :find_user
+    before_action :find_reservation, only: [:show]
 
     def index
         reservations = user.reservations
@@ -8,18 +9,22 @@ class ReservationsController < ApplicationController
     end
 
     def create
-        location = Location.find_by(name: booking_params[:location])
-        table = location.tables.where("capacity >= '#{booking_params[:number_of_diners]}'")[0]
-        nu_booking = @user.bookings.create(booking_params.except(:user_id, :location))
-        nu_booking.location = location
-        nu_booking.table = table
-        nu_booking.save
-        send_message(@user.mobile_number, "You've created a booking at #{location.name} to start at #{nu_booking.datetime}. We look forward to seeing you :)")
-        render json: BookingsSerializer.new(nu_booking).serialized_json
+        begin
+            restaurant = Restaurant.find_by(name: reservation_params[:restaurant])
+            reservation = user.reservations.create(reservation_params.except(:restaurant_id))
+            reservation.restaurant_id = restaurant.id
+            restaurant.save
+            send_message(@user.mobile_number, "You've created a booking at #{restaurant.name} to start at #{reservation.time}. We look forward to seeing you :)")
+            render json: ReservationsSerializer.new(reservation).serialized_json
+        rescue
+            render json: {message: "Unable to create booking, please check details and try again"}, status: 401
+        end
     end
 
     def show
-
+         render json: RestaurantsSerializer.new(reservation).serialized_json
+    end
+    
 
     private
 
@@ -38,12 +43,17 @@ class ReservationsController < ApplicationController
         user = User.find_by(id: reservation_params[:user_id])
     end
 
-    def booking_params
+    def find_reservation
+        reservation = Reservation.find_by(id: reservation_params[:reservation_id])
+    end
+
+    def reservation_params
         params.permit(:user_id,
-                      :location,
-                      :datetime,
-                      :number_of_diners,
-                      :notes)
+                      :reservation_id,
+                      :name,
+                      :time,
+                      :diners
+                     )
     end
 
 end
