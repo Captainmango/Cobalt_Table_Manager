@@ -3,8 +3,8 @@ class ReservationsController < ApplicationController
     before_action :find_user
 
     def index
-        bookings = user.bookings
-        render json: BookingsSerializer.new(bookings).serialized_json
+        reservations = user.reservations
+        render json: ReservationsSerializer.new(reservations).serialized_json
     end
 
     def create
@@ -17,6 +17,9 @@ class ReservationsController < ApplicationController
         send_message(@user.mobile_number, "You've created a booking at #{location.name} to start at #{nu_booking.datetime}. We look forward to seeing you :)")
         render json: BookingsSerializer.new(nu_booking).serialized_json
     end
+
+    def show
+
 
     private
 
