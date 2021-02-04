@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-    def find_all_restaurants
+    def index
         restaurants = Restaurant.all
         render json: RestaurantsSerializer.new(restaurants).serialized_json
     end
@@ -25,8 +25,8 @@ class RestaurantsController < ApplicationController
         params.permit(:search_term)
     end
 
-    def restaurant_params
-        params.permit()
-    end
+    # def restaurant_params
+    #     params.permit()
+    # end
 
 end

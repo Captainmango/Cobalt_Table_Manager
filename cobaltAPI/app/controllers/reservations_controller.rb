@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
     before_action :find_user
 
     def index
-        bookings = @user.bookings
+        bookings = user.bookings
         render json: BookingsSerializer.new(bookings).serialized_json
     end
 
@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
     end
 
     def find_user
-        @user = User.find_by(id: reservation_params[:user_id])
+        user = User.find_by(id: reservation_params[:user_id])
     end
 
     def booking_params
