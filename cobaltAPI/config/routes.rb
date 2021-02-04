@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   get "/locations", to: "locations#index"
   
   get "/users/:user_id/bookings", to: "bookings#index"
-  post "/users/:user_id/bookings", to: "bookings#create"
+  post "/users/:user_id/reservations", to: "bookings#create"
   
   post "/signup", to: "users#create"
   post "/login", to: "users#login"
-  get "/auto_login", to: "users#auto_login"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
