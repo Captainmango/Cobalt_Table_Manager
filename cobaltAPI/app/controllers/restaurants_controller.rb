@@ -1,2 +1,32 @@
 class RestaurantsController < ApplicationController
+
+    def find_all_restaurants
+        restaurants = Restaurant.all
+        render json: RestaurantsSerializer.new(restaurants).serialized_json
+    end
+
+    def get_by_search_term
+        search_term = search_params[:search_term]
+
+        begin
+            restaurants = Restaurant.where("name LIKE '%#{search_term}%'")
+                      .or(Restaurant.where("address LIKE '%#{search_term}%'"))
+                      .or(Restaurant.where("name LIKE '%#{search_term.capitalize}%'"))
+                      .or(Restaurant.where("address LIKE '%#{search_term.capitalize}%'"))
+            render json: RestaurantsSerializer.new(restaurants).serialized_json
+        rescue
+            render json: {message: "Couldn't find restaurants by what you searched. Please try again"}, status: 404
+        end
+    end
+
+    private
+
+    def search_params
+        params.permit(:search_term)
+    end
+
+    def restaurant_params
+        params.permit()
+    end
+
 end
