@@ -4,14 +4,14 @@ class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:show]
 
     def index
-        reservations = user.reservations
+        reservations = @user.reservations
         render json: ReservationsSerializer.new(reservations).serialized_json
     end
 
     def create
         begin
             restaurant = Restaurant.find_by(name: reservation_params[:restaurant])
-            reservation = user.reservations.create(reservation_params.except(:restaurant_id))
+            reservation = @user.reservations.create(reservation_params.except(:restaurant_id))
             reservation.restaurant_id = restaurant.id
             restaurant.save
             send_message(@user.mobile_number, "You've created a booking at #{restaurant.name} to start at #{reservation.time}. We look forward to seeing you :)")
@@ -40,7 +40,7 @@ class ReservationsController < ApplicationController
     end
 
     def find_user
-        user = User.find_by(id: reservation_params[:user_id])
+        @user = User.find_by(id: reservation_params[:user_id])
     end
 
     def find_reservation

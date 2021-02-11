@@ -1,4 +1,4 @@
-class RestautantsSerializer
+class RestaurantsSerializer
   include FastJsonapi::ObjectSerializer
   attributes :name, :address, :image
 

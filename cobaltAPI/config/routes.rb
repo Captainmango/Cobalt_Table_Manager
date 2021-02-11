@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  resources :reservations
-  resources :restaurants
-  resources :users
-  resources :tables
+
   get "/restaurants/:search_term", to: "restaurants#get_by_search_term"
   get "/restaurants", to: "restaurants#index"
   
