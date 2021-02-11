@@ -10,19 +10,20 @@ class ReservationsController < ApplicationController
 
     def create
         begin
-            restaurant = Restaurant.find_by(name: reservation_params[:restaurant])
+            restaurant = Restaurant.find_by(id: reservation_params[:restaurant_id])
             reservation = @user.reservations.create(reservation_params.except(:restaurant_id))
             reservation.restaurant_id = restaurant.id
-            restaurant.save
-            send_message(@user.mobile_number, "You've created a booking at #{restaurant.name} to start at #{reservation.time}. We look forward to seeing you :)")
-            render json: ReservationsSerializer.new(reservation).serialized_json
+            reservation.save
         rescue
             render json: {message: "Unable to create booking, please check details and try again"}, status: 401
+        else
+            send_message(@user.mobile_number, "You've created a booking at #{restaurant.name} to start at #{reservation.time}. We look forward to seeing you :)")
+            render json: ReservationsSerializer.new(reservation).serialized_json
         end
     end
 
     def show
-         render json: RestaurantsSerializer.new(reservation).serialized_json
+         render json: ReservationsSerializer.new(@reservation).serialized_json
     end
     
 
@@ -44,13 +45,13 @@ class ReservationsController < ApplicationController
     end
 
     def find_reservation
-        reservation = Reservation.find_by(id: reservation_params[:reservation_id])
+        @reservation = Reservation.find_by(id: reservation_params[:reservation_id])
     end
 
     def reservation_params
         params.permit(:user_id,
                       :reservation_id,
-                      :name,
+                      :restaurant_id,
                       :time,
                       :diners
                      )

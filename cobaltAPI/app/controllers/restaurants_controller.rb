@@ -13,9 +13,10 @@ class RestaurantsController < ApplicationController
                       .or(Restaurant.where("address LIKE '%#{search_term}%'"))
                       .or(Restaurant.where("name LIKE '%#{search_term.capitalize}%'"))
                       .or(Restaurant.where("address LIKE '%#{search_term.capitalize}%'"))
-            render json: RestaurantsSerializer.new(restaurants).serialized_json
         rescue
             render json: {message: "Couldn't find restaurants by what you searched. Please try again"}, status: 404
+        else
+            render json: RestaurantsSerializer.new(restaurants).serialized_json
         end
     end
 

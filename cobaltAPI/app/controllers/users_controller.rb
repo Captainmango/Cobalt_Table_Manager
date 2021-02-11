@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     # Create new user
     def create
-        user = role.users.create(user_params)
+        user = User.create(user_params)
         if user.valid?
             token = encode_token({user_id: user.id})
             render json: UsersSerializer.new(user, {params: {token: token}}).serialized_json

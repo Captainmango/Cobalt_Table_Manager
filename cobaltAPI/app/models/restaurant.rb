@@ -4,8 +4,7 @@ class Restaurant < ApplicationRecord
     validates_presence_of :name, :address, :image
 
     def avg_rating
-        ratings_list = []
-        ratings = self.reservations.select{|reservation| ratings_list << reservation.rating}
+        ratings = self.reservations.map{|reservation| reservation.rating}
         return ratings_list.sum(0.0) / ratings_list.length
     end
 
