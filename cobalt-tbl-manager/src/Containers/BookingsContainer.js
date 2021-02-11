@@ -26,7 +26,6 @@ export class LocationsContainer extends React.Component {
         }
       }
     render() {
-      console.log(3)
         return (
           
             <div>
