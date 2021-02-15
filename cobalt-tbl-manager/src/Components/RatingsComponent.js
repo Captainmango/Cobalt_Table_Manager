@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-function LikesCounter() {
+function RatingComponent(props) {
 
     const [count, updateCount] = useState(0)
 
@@ -14,4 +14,4 @@ function LikesCounter() {
     )
 }
 
-export default LikesCounter
+export default RatingComponent;

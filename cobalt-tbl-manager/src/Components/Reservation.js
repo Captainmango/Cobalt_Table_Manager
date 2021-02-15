@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Booking = (props) => {
+const Reservation = (props) => {
     return (
     <tr>
         <td>{props.name}</td> 
@@ -11,4 +11,4 @@ const Booking = (props) => {
     )
 }
 
-export default Booking;
+export default Reservation;

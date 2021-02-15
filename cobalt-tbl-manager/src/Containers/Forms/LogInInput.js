@@ -9,31 +9,23 @@ import { toast } from 'react-toastify';
 
 
 
-class LogInInput extends Component {
+const LogInInput = () => {
 
-    state = {
-        username: "",
-        password: ""
-    }
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
 
-    handleOnChange(event) {
-        this.setState({
-          [event.target.name]: event.target.value
-        });
-      }
-
-      handleOnSubmit(event) {
+    const handleOnSubmit = (event) => {
         event.preventDefault();
-        this.props.logIn(this.state);
-        this.props.addFlashMessage("Success","You've been signed in","success");
-        this.setState({
-            username: "",
-            password: ""
-        });
+        props.logIn({username, password});
+        toast.success("Logged in successfully", {
+            position: "top-center",
+            hideProgressBar: true,
+            closeOnClick: true
+        })
+        setUsername("");
+        setPassword("");
     }
-
-    render() {
 
         return (
             <>
@@ -43,8 +35,8 @@ class LogInInput extends Component {
                         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl
-                        value = {this.state.username}
-                        onChange={this.handleOnChange.bind(this)}
+                        value = {username}
+                        onChange={ (event) => setUsername(event.target.value) }
                         placeholder="Username"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
@@ -52,20 +44,19 @@ class LogInInput extends Component {
                     />
                     
                     <FormControl
-                        value = {this.state.password}
-                        onChange={this.handleOnChange.bind(this)}
+                        value = {password}
+                        onChange={ (event) => setPassword(event.target.value) }
                         placeholder="Password"
                         aria-label="Password"
                         type="password"
                         name="password"
                     />
-                    <Button onClick={this.handleOnSubmit.bind(this)} variant="btn btn-outline-secondary">Log in</Button>
+                    <Button onClick={ (event) => { handleOnSubmit(event) } } variant="btn btn-outline-secondary">Log in</Button>
                     </InputGroup>
                     </Form>
             </>
         )
     }
-}
 
 
 
