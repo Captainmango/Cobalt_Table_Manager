@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchMyBookings } from '../Actions/bookingsActions';
-import BookingsTable from '../Components/BookingsTable';
+import { fetchMyReservations } from '../Actions/reservationsActions';
 import Spinner from '../icons/Spinner.svg';
 
-export class LocationsContainer extends React.Component {
+export const ReservationsContainer = (props) => {
 
-    componentDidMount() {
-        let user_id = this.props.user.id
-        this.props.fetchMyBookings(user_id)
-      }
+    
+    useEffect(() => {
+      props.fetchMyReservations
+
+    }, [])
       
 
 
-      handleLoading = () => {
+    const handleLoading = () => {
         if(this.props.requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -24,29 +24,29 @@ export class LocationsContainer extends React.Component {
           return <BookingsTable />
         }
       }
-    render() {
+
         return (
           
             <div>
                 <h1>My Bookings</h1>
                 <br />
-                {this.handleLoading()}
+                { handleLoading() }
             </div>
         )
-    }
+    
 }
 
 const mapStateToProps = (state) => {
     return {
-    bookings: state.bookings.bookings,
+    bookings: state.reservations.reservations,
     user: state.users.user,
-    requesting: state.bookings.requesting
+    requesting: state.reservations.requesting
     }   
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    fetchMyBookings: (user_id) => {dispatch(fetchMyBookings(user_id))}
+    fetchMyReservations: (user_id) => {dispatch(fetchMyReservations(user_id))}
 }
 }
 

@@ -1,50 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { fetchAllLocations } from '../../Actions/locationsActions'
-import { postBooking } from '../../Actions/bookingsActions'
-import { LocationOption } from '../../Components/LocationOption';
+import { fetchAllRestaurants } from '../../Actions/restaurantsActions'
+import { postReservation } from '../../Actions/reservationsActions'
 import Spinner from '../../icons/Spinner.svg';
 
-export class BookingInput extends React.Component {
+export const BookingInput = (props) => {
 
-    state = {
-        user_id: this.props.user.id,
-        location:"",
-        datetime:"",
-        number_of_diners:"",
-        notes: ""
-    }
-
-    componentDidMount() {
-       this.props.fetchAllLocations()
-    }
+    const [user_id, setUserID] = useState(props.user.id);
+    const [restaurant, setRestaurant] = useState("");
+    const [time, setTime] = useState("");
+    const [diners, setDiners] = useState("");
 
 
-    handleOnChange(event) {
-        this.setState({
-          [event.target.name]: event.target.value
-        });
-      }
+    useEffect(() => {
+        props.fetchAllRestaurants()
+    }, [])
 
-    handleOnSubmit(event) {
+
+    const handleOnSubmit = (event) => {
         event.preventDefault();
-        this.props.createBooking(this.props.user.id, this.state);
-        this.setState({
-            user_id: this.props.user.id,
-            location:"",
-            datetime:"",
-            number_of_diners:"",
-            notes: ""
-        });
+        props.createReservation(user_id, {restaurant,
+                                 time,
+                                 diners});
+        
+        setRestaurant("");
+        setTime("");
+        setDiners("");
     }
        
-
-    render() {
         if(this.props.requesting) {
             return <>
               <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -97,21 +85,21 @@ export class BookingInput extends React.Component {
         
             
         )
-    }}
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
-    locations: state.locations.locations,
+    reservations: state.reservations.reservations,
     user: state.users.user,
-    requesting: state.locations.requesting
+    requesting: state.reservations.requesting
     }   
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    fetchAllLocations: () => {dispatch(fetchAllLocations())},
-    createBooking: (user_id, booking) => {dispatch(postBooking(user_id, booking))}
+    fetchAllRestaurants: () => {dispatch(fetchAllRestaurants())},
+    createReservation: (user_id, reservation) => {dispatch(postReservation(user_id, reservation))}
     }
 }
 
