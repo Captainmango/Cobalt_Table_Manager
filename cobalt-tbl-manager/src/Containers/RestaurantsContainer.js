@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMyLocations } from '../Actions/locationsActions';
 import LocationsTable from '../Components/LocationsTable';
 import Spinner from '../icons/Spinner.svg';
 
-export class LocationsContainer extends React.Component {
-
-    componentDidMount() {
-        let user_id = this.props.user.id
-        this.props.fetchMyLocations(user_id)
-      }
-      
+export const RestaurantsContainer = () => {
+    
+    useEffect(() => {
+      props.fetchAllRestaurants();
+    }, [])
 
 
-      handleLoading = () => {
+    const handleLoading = () => {
         if(this.props.requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -24,30 +22,29 @@ export class LocationsContainer extends React.Component {
           return <LocationsTable />
         }
       }
-    render() {
         return (
           
             <div>
                 <h1>My Locations</h1>
                 <br />
-                {this.handleLoading()}
+                { handleLoading() }
             </div>
         )
-    }
+    
 }
 
 const mapStateToProps = (state) => {
     return {
-    locations: state.locations.locations,
+    locations: state.restaurants.restaurants,
     user: state.users.user,
-    requesting: state.locations.requesting
+    requesting: state.restaurants.requesting
     }   
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    fetchMyLocations: (user_id) => {dispatch(fetchMyLocations(user_id))}
+    fetchAllRestaurants: () => {dispatch(fetchAllRestaurants())}
 }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsContainer);
