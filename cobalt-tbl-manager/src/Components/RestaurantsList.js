@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Location from './Location'
+import Location from './Restaurant'
 import Table from 'react-bootstrap/Table'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 
-const LocationsTable = (props) => {
+const RestaurantsList = (props) => {
     
     return (
         <div>
@@ -51,4 +51,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps)(LocationsTable);
+export default connect(mapStateToProps)(RestaurantsList);

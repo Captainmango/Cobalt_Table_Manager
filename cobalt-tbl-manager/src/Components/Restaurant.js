@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Location = (props) => {
+const Restaurant = (props) => {
     return (
     <tr>
         <td>{props.name}</td> 
@@ -11,4 +11,4 @@ const Location = (props) => {
     )
 }
 
-export default Location;
+export default Restaurant;

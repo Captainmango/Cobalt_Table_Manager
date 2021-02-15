@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import LikesCounter from './LikesCounter'
 
-const BookingsTable = (props) => {
+const ReservationsList = (props) => {
     
     return (
         <div>
@@ -52,4 +52,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps)(BookingsTable);
+export default connect(mapStateToProps)(ReservationsList);

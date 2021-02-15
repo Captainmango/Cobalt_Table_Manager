@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMyLocations } from '../Actions/locationsActions';
-import LocationsTable from '../Components/LocationsTable';
+import LocationsTable from '../Components/RestaurantsList';
 import Spinner from '../icons/Spinner.svg';
 
 export const RestaurantsContainer = () => {

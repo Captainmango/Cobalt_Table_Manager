@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const ShowBooking = () => {
+const ShowReservation = () => {
 
     let { id } = useParams();
     // TODO: use IF statements and filter to get the reservation we want to show. 
@@ -14,4 +14,4 @@ const ShowBooking = () => {
     )
 }
 
-export default ShowBooking
+export default ShowReservation

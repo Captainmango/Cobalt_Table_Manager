@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMyReservations } from '../Actions/reservationsActions';
 import Spinner from '../icons/Spinner.svg';
-import BookingsTable from '../Components/BookingsTable';
+import BookingsTable from '../Components/ReservationsList';
 
 export const ReservationsContainer = (props) => {
 
