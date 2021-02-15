@@ -51,7 +51,7 @@ const LogInInput = () => {
                         type="password"
                         name="password"
                     />
-                    <Button onClick={ (event) => { handleOnSubmit(event) } } variant="btn btn-outline-secondary">Log in</Button>
+                    <Button onClick={ (event) => { handleOnSubmit(event); } } variant="btn btn-outline-secondary">Log in</Button>
                     </InputGroup>
                     </Form>
             </>
