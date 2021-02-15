@@ -7,19 +7,18 @@ function restaurantsReducer(state = {restaurants: [], requesting: false }, actio
                 requesting: false
             }
 
-        case "ADD_MY_RESTAURANTS":
+        case "ADD_PREVIOUS_RESTAURANTS":
             return {...state,
-                restaurants: [],
+                restaurants: action.restaurants,
                 requesting: false
             }
 
-        // case "FETCH_MY_RESTAURANTS":
-        //     return {
-        //         ...state,
-        //         restaurants: [],
-        //         myLocations: state.restaurants,
-        //         requesting: true
-        //     }
+        case "FETCH_PREVIOUS_RESTAURANTS":
+            return {
+                ...state,
+                restaurants: state.restaurants,
+                requesting: true
+            }
 
         case "FETCH_ALL_RESTAURANTS":
             return {

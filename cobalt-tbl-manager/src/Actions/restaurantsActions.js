@@ -1,7 +1,7 @@
-export const fetchMyLocations = (user_id) => {
+export const fetchPreviousLocations = (user_id) => {
     return (dispatch) => {
-        dispatch({type: "FETCH_MY_LOCATIONS"});
-        fetch(`http://localhost:3001/users/${user_id}/locations`, {
+        dispatch({type: "FETCH_PREVIOUS_RESTAURANTS"});
+        fetch(`http://localhost:3001/users/${user_id}/restaurants`, {
             method: 'GET',
             mode: 'cors',
             headers: {'Content-Type': 'application/json',
@@ -9,17 +9,17 @@ export const fetchMyLocations = (user_id) => {
         })
         .then(response => response.json())
         .then(returnData => {
-            let locations = returnData.data;
-            dispatch({type: "ADD_MY_LOCATIONS", myLocations: locations})
+            let restaurants = returnData.data;
+            dispatch({type: "ADD_PREVIOUS_RESTAURANTS", restaurants: restaurants})
         })
 
     }
 }
 
-export const fetchAllLocations = () => {
+export const fetchAllRestautants = () => {
     return (dispatch) => {
-        dispatch({type: "FETCH_ALL_LOCATIONS"});
-        fetch(`http://localhost:3001/locations`, {
+        dispatch({type: "FETCH_ALL_RESTAURANTS"});
+        fetch(`http://localhost:3001/restaurants`, {
             method: 'GET',
             mode: 'cors',
             headers: {'Content-Type': 'application/json',
@@ -27,16 +27,16 @@ export const fetchAllLocations = () => {
         })
         .then(response => response.json())
         .then(returnData => {
-            let locations = returnData.data;
-            dispatch({type: "ADD_LOCATIONS", locations: locations})
+            let restaurants = returnData.data;
+            dispatch({type: "ADD_RESTAURANTS", restaurants: restaurants })
         })
 
     }
 }
 
-export const deleteLocations = () => {
+export const deleteRestaurants = () => {
     return (dispatch) => {
-      dispatch({type: "DELETE_LOCATIONS"})
+      dispatch({type: "DELETE_RESTAURANTS"})
     }
   }
   
