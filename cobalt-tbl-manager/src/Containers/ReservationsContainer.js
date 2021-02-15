@@ -9,7 +9,6 @@ export class LocationsContainer extends React.Component {
     componentDidMount() {
         let user_id = this.props.user.id
         this.props.fetchMyBookings(user_id)
-        console.log(2)
       }
       
 

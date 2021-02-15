@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -8,39 +8,31 @@ import Col from 'react-bootstrap/Col'
 import { createNewUser } from '../../Actions/userActions'
 
 
-class SignUpInput extends Component {
+const SignUpInput = () => {
 
-    state = {
-        username: "",
-        password: "",
-        first_name: "",
-        last_name: "",
-        mobile_number: "",
-        email_address: "",
-        role: ""
-    }
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [first_name, setFirstName] = useState("")
+    const [last_name, setLastName] = useState("")
+    const [mobile_number, setMobileNumber] = useState("")
+    const [email_address, setEmailAddress] = useState("")
 
-    handleOnChange(event) {
-        this.setState({
-          [event.target.name]: event.target.value
-        });
-      }
-
-    handleOnSubmit(event) {
+    const handleOnSubmit = (event) => {
         event.preventDefault();
-        this.props.createUser(this.state);
-        this.setState({
-            username: "",
-            password: "",
-            first_name: "",
-            last_name: "",
-            mobile_number: "",
-            email_address: "",
-            role: ""
-        });
+        props.createUser({username, 
+                          password, 
+                          first_name, 
+                          last_name, 
+                          mobile_number, 
+                          email_address});
+        setUsername("");
+        setPassword("");
+        setFirstName("");
+        setLastName("");
+        setMobileNumber("");
+        setEmailAddress("");
     }
 
-    render() {
         return (
             <div>
                 <Container>
@@ -52,7 +44,7 @@ class SignUpInput extends Component {
                 <Form>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control value={this.state.email_address} onChange={event => this.handleOnChange(event)} name="email_address" type="email" placeholder="Enter email" />
+                        <Form.Control value={email_address} onChange={event => setEmailAddress(event.target.value)} name="email_address" type="email" placeholder="Enter email" />
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                         </Form.Text>
@@ -60,49 +52,40 @@ class SignUpInput extends Component {
 
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control value={this.state.username} onChange={event => this.handleOnChange(event)} name="username" type="text" placeholder="Username" />
+                        <Form.Control value={username} onChange={event => setUsername(event.target.value)} name="username" type="text" placeholder="Username" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control value={this.state.password} onChange={event => this.handleOnChange(event)} name="password" type="password" placeholder="Password" />
+                        <Form.Control value={password} onChange={event => setPassword(event.target.value)} name="password" type="password" placeholder="Password" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicFirstName">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control value={this.state.first_name} onChange={event => this.handleOnChange(event)} name="first_name" type="text" placeholder="First name" />
+                        <Form.Control value={first_name} onChange={event => setFirstName(event.target.value)} name="first_name" type="text" placeholder="First name" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicLastName">
                         <Form.Label>Last name</Form.Label>
-                        <Form.Control value={this.state.last_name} onChange={event => this.handleOnChange(event)} name="last_name" type="text" placeholder="Last name" />
+                        <Form.Control value={last_name} onChange={event => setLastName(event.target.value)} name="last_name" type="text" placeholder="Last name" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicMobile">
                         <Form.Label>Mobile number</Form.Label>
-                        <Form.Control value={this.state.mobile_number} onChange={event => this.handleOnChange(event)} name="mobile_number" type="tel" placeholder="Mobile number" />
+                        <Form.Control value={mobile_number} onChange={event => setMobileNumber(event.target.value)} name="mobile_number" type="tel" placeholder="Mobile number" />
                         <Form.Text className="text-muted">
                         The same goes for your number. Please make sure to include your dial code.
                         </Form.Text>
-                    </Form.Group> 
-
-                    <Form.Group controlId = "formBasicRole">
-                        <Form.Label>Role</Form.Label>
-                        <Form.Control onChange={event => this.handleOnChange(event)} name="role" as="select" defaultValue="Choose your role">
-                            <option value="owner"> Owner </option>    
-                            <option value="server"> Server </option>
-                            <option value="diner"> Diner </option>
-                        </Form.Control> 
-                    </Form.Group>                   
+                    </Form.Group>               
                     
-                    <Button variant="primary" type="submit" onClick={this.handleOnSubmit.bind(this)}>
+                    <Button variant="primary" type="submit" onClick={event => handleOnSubmit(event)}>
                         Submit
                     </Button>
                     </Form>
                 </Container>
             </div>
         )
-    }
+    
 }
 
 

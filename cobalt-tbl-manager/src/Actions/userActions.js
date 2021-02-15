@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export const createNewUser = (data) => {
     return (dispatch) => {
       dispatch({ type: "CREATE_NEW_USER" });
@@ -17,7 +19,7 @@ export const createNewUser = (data) => {
                     mobile_number: returnData.data.attributes.mobile_number};
           localStorage.setItem("token", returnData.data.attributes.token);
         dispatch({ type: 'ADD_USER', user})});
-        alert("Signed up and logged in successfully");
+        toast.success("Signed up and logged in successfully");
       }
     }
 
@@ -40,9 +42,9 @@ export const logInUser = (username, password) => {
                         mobile_number: returnData.data.attributes.mobile_number};
             localStorage.setItem("token", returnData.data.attributes.token);
             dispatch({ type: "ADD_USER", user });
-            alert("Logged in successfully");
+            toast.success("Logged in successfully");
         } else {
-          alert(returnData.error)
+            toast.error(returnData.error)
         }
         })
     }
