@@ -12,7 +12,7 @@ export const RestaurantsContainer = () => {
 
 
     const handleLoading = () => {
-        if(this.props.requesting) {
+        if(props.requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <div><img src={Spinner} alt="spinner" /></div>

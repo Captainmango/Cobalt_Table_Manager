@@ -33,7 +33,7 @@ export const BookingInput = (props) => {
         setDiners("");
     }
        
-        if(this.props.requesting) {
+        if(props.requesting) {
             return <>
               <div style={{display: 'flex', justifyContent: 'center'}}>
                 <div><img src={Spinner} alt="spinner" /></div>
@@ -52,31 +52,27 @@ export const BookingInput = (props) => {
 
       <Form.Group controlId = "formBasicLocation">
               <Form.Label>Location</Form.Label>
-              <Form.Control onChange={event => this.handleOnChange(event)} name="location" as="select" defaultValue="Choose your location">
-                  {this.props.locations && this.props.locations.length > 0 ?
-                  this.props.locations.map((location, index) => 
-                  <LocationOption key={index} value={location.id} name={location.attributes.name} />) :
+              <Form.Control onChange={event => setRestaurant(event.target.value)} name="location" as="select" defaultValue="Choose your restaurant">
+                  {props.restaurants && props.restaurants.length > 0 ?
+                  props.restaurants.map((restaurant, index) => 
+                  <LocationOption key={index} value={restaurant.id} name={restaurant.attributes.name} />) :
                 <option>Loading options</option>}
               </Form.Control> 
           </Form.Group>
 
           <Form.Group controlId="formBasicDateTime">
             <Form.Label>Date/ Time</Form.Label>
-            <Form.Control value={this.state.datetime} onChange={event => this.handleOnChange(event)} name="datetime" type="datetime-local" />
+            <Form.Control value={time} onChange={event => setTime(event.target.value)} name="datetime" type="datetime-local" />
         </Form.Group>
 
         <Form.Group controlId="formBasicDiners">
             <Form.Label>Diners</Form.Label>
-            <Form.Control value={this.state.number_of_diners} onChange={event => this.handleOnChange(event)} name="number_of_diners" type="number" min="0" step="1" />
+            <Form.Control value={diners} onChange={event => setDiners(event.target.value)} name="number_of_diners" type="number" min="0" step="1" />
         </Form.Group>
 
-        <Form.Group controlId="formBasicDiners">
-            <Form.Label>Notes</Form.Label>
-            <Form.Control value={this.state.notes} onChange={event => this.handleOnChange(event)} name="notes" as="textarea" rows="5" />
-        </Form.Group>
 
           
-          <Button variant="primary" type="submit" onClick={this.handleOnSubmit.bind(this)}>
+          <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit() }} >
               Submit
           </Button>
           </Form>
