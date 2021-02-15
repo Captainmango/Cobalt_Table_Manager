@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchMyLocations } from '../Actions/locationsActions';
+import { fetchAllRestaurants } from '../Actions/restaurantsActions';
 import LocationsTable from '../Components/RestaurantsList';
 import Spinner from '../icons/Spinner.svg';
 
-export const RestaurantsContainer = () => {
+export const RestaurantsContainer = (props) => {
     
     useEffect(() => {
       props.fetchAllRestaurants();

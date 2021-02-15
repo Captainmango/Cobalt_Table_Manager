@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import bookingsReducer from './bookingsReducer';
+import reservationsReducer from './reservationsReducer';
 import usersReducer from './usersReducer';
-import locationsReducer from './locationsReducer';
+import restaurantsReducer from './restaurantsReducer';
 
 
-const rootReducer = combineReducers({bookings: bookingsReducer, 
-                                        locations: locationsReducer, 
+const rootReducer = combineReducers({reservations: reservationsReducer, 
+                                        restaurants: restaurantsReducer, 
                                         users: usersReducer
                                        });
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Booking from './Booking'
+import Reservation from './Reservation'
 import Table from 'react-bootstrap/Table'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import LikesCounter from './LikesCounter'
+import RatingsComponent from './RatingsComponent'
 
 const ReservationsList = (props) => {
     
@@ -27,13 +27,13 @@ const ReservationsList = (props) => {
                 </thead>
                 <tbody>
                     { props.bookings && props.bookings.length > 0 ? 
-                        props.bookings.map((booking, index) => <Booking
+                        props.bookings.map((booking, index) => <Reservation
                         key={index}
                         id={index} 
                             name={booking.attributes.location.name}
                             number_of_diners={booking.attributes.number_of_diners}
                             date={new Date(booking.attributes.datetime).toString()}
-                    likes={<LikesCounter />}/>)
+                    likes={<RatingsComponent />}/>)
 
                     : console.log("loading")}
                 </tbody>
