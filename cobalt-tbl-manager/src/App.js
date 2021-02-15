@@ -5,7 +5,7 @@ import Home from './Routes/Home'
 import Signup from './Routes/Signup'
 import Locations from './Routes/Locations'
 import NewBooking from './Routes/NewBooking';
-import Bookings from './Routes/Bookings';
+import Reservations from './Routes/Reservations';
 import ShowBooking from './Routes/ShowBooking';
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
@@ -26,7 +26,7 @@ export const App = () => {
               
               <ToastContainer />
               <Route exact path="/" component={Home}/>
-              <Route exact path="/bookings" component={Bookings} />
+              <Route exact path="/bookings" component={Reservations} />
               <Route exact path="/locations" component={Locations} />
               <Route exact path="/signup" component={Signup}/>
               <Route exact path="/logout" component={Logout} />

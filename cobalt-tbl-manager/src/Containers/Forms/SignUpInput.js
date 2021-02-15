@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 import { createNewUser } from '../../Actions/userActions'
 
 
-const SignUpInput = () => {
+const SignUpInput = (props) => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")

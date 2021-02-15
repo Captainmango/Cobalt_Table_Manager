@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 
 
-const LogInInput = () => {
+const LogInInput = (props) => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

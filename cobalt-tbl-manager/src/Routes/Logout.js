@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { logOutUser } from '../Actions/userActions'
 import { Redirect } from 'react-router-dom'
 
-export const Logout = () => {
+export const Logout = (props) => {
 
   useEffect(() => {
-    this.handleLogout()
+    handleLogout()
   }, [])
 
-  handleLogout = () => {
+  const handleLogout = () => {
     props.logout()
   }
 

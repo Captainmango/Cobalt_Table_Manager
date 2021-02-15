@@ -16,7 +16,7 @@ export const fetchPreviousLocations = (user_id) => {
     }
 }
 
-export const fetchAllRestautants = () => {
+export const fetchAllRestaurants = () => {
     return (dispatch) => {
         dispatch({type: "FETCH_ALL_RESTAURANTS"});
         fetch(`http://localhost:3001/restaurants`, {

@@ -26,7 +26,7 @@ export const postReservation = (user_id, reservation) => {
             mode: 'cors',
             headers: {'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.token}` },
-            body: JSON.stringify(booking)
+            body: JSON.stringify(reservation)
         })
         .then(response => response.json())
             .then(returnData => {

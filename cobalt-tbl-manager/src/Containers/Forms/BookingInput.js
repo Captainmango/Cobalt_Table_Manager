@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { fetchAllRestaurants } from '../../Actions/restaurantsActions'
 import { postReservation } from '../../Actions/reservationsActions'
+import { LocationOption } from '../../Components/LocationOption';
 import Spinner from '../../icons/Spinner.svg';
 
 export const BookingInput = (props) => {

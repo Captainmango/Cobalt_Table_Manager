@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMyReservations } from '../Actions/reservationsActions';
 import Spinner from '../icons/Spinner.svg';
+import BookingsTable from '../Components/BookingsTable';
 
 export const ReservationsContainer = (props) => {
 
     
     useEffect(() => {
-      props.fetchMyReservations
+      props.fetchMyReservations()
 
     }, [])
       
