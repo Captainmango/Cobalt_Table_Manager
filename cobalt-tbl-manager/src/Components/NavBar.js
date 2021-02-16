@@ -21,7 +21,7 @@ const CobaltNavBar = (props) => {
                 <Navbar.Brand><Link to= "/"><img src={logo} alt="cobalt-logo"/> Cobalt</Link></Navbar.Brand>
                     
 
-                {isLoggedIn ? <NavLink className="ml-3 mr-3 align-self-center" to="/logout">Log out</NavLink> : <NavLink className="ml-3 mr-3 align-self-center" to="/Signup">Login/ Sign up</NavLink>}
+                {isLoggedIn ? <NavLink className="ml-3 mr-3 align-self-center" to="/logout">Log out</NavLink> : <NavLink className="ml-3 mr-3 align-self-center" to="/login">Login/ Sign up</NavLink>}
                 
                 <NavDropdown className="align-self-center" disabled={!isLoggedIn} title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
                     <NavLink to="/bookings">My Bookings</NavLink> <br />
