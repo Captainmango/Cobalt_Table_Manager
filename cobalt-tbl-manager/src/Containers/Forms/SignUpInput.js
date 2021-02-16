@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -10,6 +10,8 @@ import { createNewUser } from '../../Actions/userActions'
 
 
 const SignUpInput = (props) => {
+
+    let history = useHistory();
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -43,9 +45,8 @@ const SignUpInput = (props) => {
         setMobileNumber("");
         setEmailAddress("");
 
-        return (
-            <Redirect push to="/" />
-              )
+        history.push('/');
+        
 
     }
 
