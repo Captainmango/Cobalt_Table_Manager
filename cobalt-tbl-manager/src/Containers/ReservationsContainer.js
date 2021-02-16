@@ -7,14 +7,14 @@ import BookingsTable from '../Components/ReservationsList';
 export const ReservationsContainer = (props) => {
 
     
-    useEffect(() => {
+    useEffect((props) => {
       props.fetchMyReservations()
 
     }, [])
       
 
 
-    const handleLoading = () => {
+    const handleLoading = (props) => {
         if(props.requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>

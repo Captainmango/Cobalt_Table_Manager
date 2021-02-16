@@ -6,7 +6,7 @@ import Spinner from '../icons/Spinner.svg';
 
 export const RestaurantsContainer = (props) => {
     
-    useEffect(() => {
+    useEffect((props) => {
       props.fetchAllRestaurants();
     }, [])
 

@@ -9,7 +9,7 @@ import ShowBooking from './Routes/ShowBooking';
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
 import Logout from './Routes/Logout';
-import {ToastContainer, toast } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 

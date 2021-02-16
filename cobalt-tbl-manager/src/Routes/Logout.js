@@ -5,13 +5,13 @@ import { Redirect } from 'react-router-dom'
 
 export const Logout = (props) => {
 
-  useEffect(() => {
-    handleLogout()
+  useEffect((props) => {
+    props.logout()
   }, [])
 
-  const handleLogout = () => {
-    props.logout()
-  }
+  // const handleLogout = () => {
+  //   props.logout()
+  // }
 
   return (
     <Redirect to="/" />
