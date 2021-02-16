@@ -29,7 +29,7 @@ const LogInInput = (props) => {
 
         return (
             <>
-                <Form inline>
+                <Form>
                     <InputGroup>
                     <InputGroup.Prepend>
                         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>

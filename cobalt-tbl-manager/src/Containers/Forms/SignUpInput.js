@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -33,15 +34,30 @@ const SignUpInput = (props) => {
         setEmailAddress("");
     }
 
+    const handleOnCancel = (event) => {
+        event.preventDefault();
+        setUsername("");
+        setPassword("");
+        setFirstName("");
+        setLastName("");
+        setMobileNumber("");
+        setEmailAddress("");
+
+        return (
+            <Redirect push to="/" />
+              )
+
+    }
+
         return (
             <div>
                 <Container>
                 <Row>
-        <Col sm={{ size: 6, order: 2, offset: 1 }}><h1 className="text-center">Sign up Form</h1></Col>
-      </Row>
-      <br/>
-      <br/>
+                    <Col sm={{ size: 6, order: 2, offset: 1 }}><h1 className="text-center">Sign up Form</h1></Col>
+                </Row>
+                <Row className="justify-content-center pt-5">
                 <Form>
+                    
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control value={email_address} onChange={event => setEmailAddress(event.target.value)} name="email_address" type="email" placeholder="Enter email" />
@@ -49,6 +65,7 @@ const SignUpInput = (props) => {
                         We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
+                    
 
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
@@ -77,11 +94,18 @@ const SignUpInput = (props) => {
                         The same goes for your number. Please make sure to include your dial code.
                         </Form.Text>
                     </Form.Group>               
-                    
-                    <Button variant="primary" type="submit" onClick={event => handleOnSubmit(event)}>
+                    <Form.Row className="justify-content-center">
+                    <Button className="m-3" variant="success" type="submit" onClick={event => handleOnSubmit(event)}>
                         Submit
                     </Button>
+
+                    <Button className="m-3" variant="danger" onClick={event => handleOnCancel(event)}>
+                        Cancel
+                    </Button>
+
+                    </Form.Row>
                     </Form>
+                </Row>
                 </Container>
             </div>
         )

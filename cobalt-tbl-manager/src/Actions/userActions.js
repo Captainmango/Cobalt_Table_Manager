@@ -33,7 +33,7 @@ export const logInUser = (username, password) => {
           body: JSON.stringify(username, password)
         })
         .then(response => response.json())
-        .then(returnData => { if(!returnData.error){
+        .then(returnData => {
             let user = {id: returnData.data.id,
                         username: returnData.data.attributes.username,
                         first_name: returnData.data.attributes.first_name,
@@ -43,9 +43,9 @@ export const logInUser = (username, password) => {
             localStorage.setItem("token", returnData.data.attributes.token);
             dispatch({ type: "ADD_USER", user });
             toast.success("Logged in successfully");
-        } else {
-            toast.error(returnData.error)
-        }
+        })
+        .catch(error => {
+          toast.error("Failed to login. Please chack tour username and password")
         })
     }
 

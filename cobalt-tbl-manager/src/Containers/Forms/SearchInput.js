@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap'
+import { searchRestaurants } from '../../Actions/restaurantsActions';
 
 const SearchInput = (props) => {
     const [searchTerm, setSearchTerm] = useState("")
@@ -27,4 +29,8 @@ const SearchInput = (props) => {
     )
 }
 
-export default SearchInput
+const mapDispatchToProps = dispatch => ({
+    searchRestaurants: (searchTerm) => dispatch(searchRestaurants(searchTerm))
+})
+
+export default connect(null, mapDispatchToProps)(SearchInput);
