@@ -24,7 +24,13 @@ function restaurantsReducer(state = {restaurants: [], requesting: false }, actio
             return {
                 ...state,
                 restaurants: state.restaurants,
-                myLocations: [],
+                requesting: true
+            }
+        
+        case "SEARCH_RESTAURANTS":
+            return {
+                ...state,
+                restaurants: state.restaurants,
                 requesting: true
             }
 
