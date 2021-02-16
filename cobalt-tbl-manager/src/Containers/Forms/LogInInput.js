@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import FormControl from 'react-bootstrap/FormControl';
 import { logInUser } from '../../Actions/userActions';
 import Button from 'react-bootstrap/Button';
@@ -68,9 +68,17 @@ const LogInInput = (props) => {
                         <Button className="m-2" variant="success" onClick={ (event) => { handleOnSubmit(event); } }>Log in</Button>
                         <Button className="m-2" variant="danger" onClick={ (event) => { handleOnCancel(event); } }>Cancel</Button>
                     </Form.Row>
+                    <Form.Row className="justify-content-center">
+                        <Link to="/signup">Don't have an account? Sign up here</Link>
+                    </Form.Row>
                     </Form>
+
+                    
                     </Col>
                     </Row>
+
+                    
+
             </Container>
         )
     }

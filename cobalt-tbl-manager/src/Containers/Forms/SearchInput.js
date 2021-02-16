@@ -9,7 +9,6 @@ const SearchInput = (props) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         props.searchRestaurants(searchTerm);
-        setSearchTerm("");
         
     }
 
@@ -17,7 +16,7 @@ const SearchInput = (props) => {
         <div className="m-5">
             <Form className="mx-auto">
                 <Form.Row className="justify-content-lg-center">
-                    <Col lg={{span: 7, offset: 2}} xs={{span: 9}}>
+                    <Col lg={{span: 7, offset: 2}} xs={{span: 10}}>
                         <Form.Control onChange={(event) => {setSearchTerm(event.target.value)}} type="text" placeholder="Search restaurants here" />
                     </Col>
                     <Col>
