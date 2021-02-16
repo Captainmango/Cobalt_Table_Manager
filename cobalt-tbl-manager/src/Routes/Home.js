@@ -1,20 +1,32 @@
 import React from 'react';
-import { Jumbotron, Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
+import SearchInput from '../Containers/Forms/SearchInput';
 
 
 const Home = () => {
     return (
-        <Container fluid className="mt-5 container-lg">
-            <Jumbotron className="bg-info">
-                <h1> Welcome to Cobalt Table Manager</h1>
-                <p>
-                    This app is a simple client side routing application that allows you, a restaurant chain owner, 
-                    to see the bookings that are taking place at your tables in the different locations you run. You can see the tables,
-                    locations and bookings by using the options on the top right of the screen. Making an account is simple, just click the dropdwon menu
-                    to get started.
-                </p>
+        <Container fluid className="bg-info mt-5">
+            <Row>
+                <Col lg={{span: 8}}>
+                    <h1 className="ml-4 pt-3 text-white"> Cobalt Table Manager</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col lg={{span: 8}} className="m-4 pb-5 text-white">
+                    <p>Book at your favourite restaurants in seconds and manage your bookings online</p>
+                </Col>
+            </Row>
+
+            <Row className="justify-content-lg-center">
+                <Col lg={{span: 8}} className="">
+                    <SearchInput />
+                </Col>
+            </Row>
+            
                 
-            </Jumbotron>
+
+                
+            
         </Container>
         
 
