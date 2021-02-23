@@ -73,7 +73,7 @@ export const BookingInput = (props) => {
 
 
           
-          <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit() }} >
+          <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit(event) }} >
               Submit
           </Button>
           </Form>

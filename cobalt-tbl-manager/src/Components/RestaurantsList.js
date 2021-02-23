@@ -1,23 +1,38 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Location from './Restaurant'
+import Restaurant from './Restaurant'
 import Spinner from '../icons/Spinner.svg'
 import Container from 'react-bootstrap/Container'
+
+const resTest = [
+    { img: "https://source.unsplash.com/collection/4173854/80x80",
+     address: "test",
+     name: "test",
+     rating: "4" },
+    { img: "https://source.unsplash.com/collection/4173854/80x80",
+     address: "test",
+     name: "test",
+     rating: "4" },
+    { img: "https://source.unsplash.com/collection/4173854/80x80",
+     address: "test",
+     name: "test",
+     rating: "4" },
+]
 
 const RestaurantsList = (props) => {
     
     return (
         <div>
-            <Container>
+            <Container className="p-3">
 
-                    { props.restaurants && props.restaurants.length > 0 ? 
-                        props.restaurants.map((restaurant, index) => <Restaurant
+                    { resTest && resTest.length > 0 ? 
+                        resTest.map((restaurant, index) => <Restaurant
                             key={index}
                             id={index}
-                            img = {restaurant.attributes.img} 
-                            address={restaurant.attributes.address}
-                            name={restaurant.attributes.name}
-                            rating={restaurant.attributes.rating} 
+                            img = {restaurant.img} 
+                            address={restaurant.address}
+                            name={restaurant.name}
+                            rating={restaurant.rating} 
                         />)
 
                     : <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -31,7 +46,7 @@ const RestaurantsList = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    myLocations: state.locations.myLocations,
+    restaurants: state.restaurants.restaurants,
     user: state.users.user
 
     
