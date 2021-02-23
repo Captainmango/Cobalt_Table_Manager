@@ -11,7 +11,7 @@ const SearchInput = (props) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         props.searchRestaurants(searchTerm);
-        history.push("/")        
+        history.push("/restaurants")        
     }
 
     return (

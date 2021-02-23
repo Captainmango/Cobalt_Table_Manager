@@ -4,31 +4,25 @@ import { fetchAllRestaurants } from '../Actions/restaurantsActions';
 import Spinner from '../icons/Spinner.svg';
 
 export const RestaurantsContainer = (props) => {
-
-  let fetchAllRestaurants = () => props.fetchAllRestaurants()
-    
-    useEffect((props) => {
-      fetchAllRestaurants();
-    }, [])
-
+  let requesting = props.requesting
+  let children = props.children
 
     const handleLoading = () => {
-        if(props.requesting) {
+        if(requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <div><img src={Spinner} alt="spinner" /></div>
             </div>
           </>
         } else {
-          return <>{ props.children }</>
+          return <>{ children }</>
       
         }
       }
         return (
           
             <div>
-                <h1>My Locations</h1>
-                <br />
+                <h1 className="text-center pt-5">Restaurants</h1>
                 { handleLoading() }
             </div>
         )
