@@ -19,7 +19,8 @@ export const RestaurantsContainer = (props) => {
             </div>
           </>
         } else {
-          return <LocationsTable />
+          return <>{ props.children }</>
+      
         }
       }
         return (

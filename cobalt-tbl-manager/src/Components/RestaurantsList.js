@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Location from './Restaurant'
-import Table from 'react-bootstrap/Table'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Spinner from '../icons/Spinner.svg'
 import Container from 'react-bootstrap/Container'
 
 const RestaurantsList = (props) => {
@@ -11,33 +9,22 @@ const RestaurantsList = (props) => {
     return (
         <div>
             <Container>
-                <Row>
-        <Col sm={{ size: 6, order: 2, offset: 1 }}></Col>
-      </Row>
-            
-            <Table size="sm" striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                    <th>Restaurant name</th>
-                    <th>Owner name</th>
-                    <th>Contact number</th>
-                    <th>Email address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { props.myLocations && props.myLocations.length > 0 ? 
-                        props.myLocations.map((location, index) => <Location
-                        key={index}
-                        id={index} 
-                            name={location.attributes.name}
-                            owner={location.attributes.owners[0].first_name}
-                            number={location.attributes.owners[0].mobile_number}
-                     email={location.attributes.owners[0].email_address}/>)
 
-                    : console.log("loading")}
-                </tbody>
+                    { props.restaurants && props.restaurants.length > 0 ? 
+                        props.restaurants.map((restaurant, index) => <Restaurant
+                            key={index}
+                            id={index}
+                            img = {restaurant.attributes.img} 
+                            address={restaurant.attributes.address}
+                            name={restaurant.attributes.name}
+                            rating={restaurant.attributes.rating} 
+                        />)
+
+                    : <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <div><img src={Spinner} alt="spinner" /></div>
+                    </div>}
+                
             
-            </Table>
             </Container>
         </div>
     )
