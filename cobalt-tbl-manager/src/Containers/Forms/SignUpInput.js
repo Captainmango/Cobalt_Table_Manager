@@ -33,6 +33,8 @@ const SignUpInput = (props) => {
         setLastName("");
         setMobileNumber("");
         setEmailAddress("");
+
+        history.push('/');
     }
 
     const handleOnCancel = (event) => {
@@ -46,7 +48,6 @@ const SignUpInput = (props) => {
 
         history.push('/');
         
-
     }
 
         return (

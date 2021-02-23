@@ -21,13 +21,9 @@ const LogInInput = (props) => {
     const handleOnSubmit = (event) => {
         event.preventDefault();
         props.logIn({username, password});
-        toast.success("Logged in successfully", {
-            position: "top-center",
-            hideProgressBar: true,
-            closeOnClick: true
-        })
         setUsername("");
         setPassword("");
+        history.push("/");
     }
 
     const handleOnCancel = (event) => {

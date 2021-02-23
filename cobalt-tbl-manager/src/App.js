@@ -26,8 +26,8 @@ export const App = () => {
               
               <ToastContainer />
               <Route exact path="/" component={Home}/>
-              <Route exact path="/bookings" component={Reservations} />
-              <Route exact path="/locations" component={Restaurants} />
+              <Route exact path="/reservations" component={Reservations} />
+              <Route exact path="/restaurants" component={Restaurants} />
               <Route exact path="/login" component={Login}/>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/logout" component={Logout} />

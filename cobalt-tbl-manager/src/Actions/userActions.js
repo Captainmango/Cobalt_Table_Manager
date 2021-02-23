@@ -42,10 +42,12 @@ export const logInUser = (username, password) => {
                         mobile_number: returnData.data.attributes.mobile_number};
             localStorage.setItem("token", returnData.data.attributes.token);
             dispatch({ type: "ADD_USER", user });
-            toast.success("Logged in successfully");
-        })
+        }).then(
+          toast.success("Logged in successfully")
+        )
         .catch(error => {
           toast.error("Failed to login. Please chack tour username and password")
+          console.log(error)
         })
     }
 
