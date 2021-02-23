@@ -38,6 +38,7 @@ export const fetchAllRestaurants = () => {
 
 export const searchRestaurants = (searchTerm) => {
     return (dispatch) => {
+        toast("Trying to find restaurants now.")
         dispatch({type: "SEARCH_RESTAURANTS"});
         fetch(`http://localhost:3001/restaurants/${searchTerm}`, {
             method: "GET",

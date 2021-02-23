@@ -1,14 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
+import { Button, InputGroup, FormControl } from 'react-bootstrap'
 
 function RatingComponent(props) {
 
-    const [count, updateCount] = useState(0)
+    const [rating, setRating] = useState(props.rating)
 
     return (
         <>
-        <button onClick={() => { updateCount(count + 1 )}}> Like </button><button onClick={() => { updateCount(count - 1 )}}> Dislike </button>
-        <p>{count}</p>
+            <InputGroup>
+                <InputGroup.Prepend>
+                    <Button variant="outline">Rate Reservation</Button>
+                    <Button onClick={()=> setRating(rating > 0 ? rating - 1 : 0 )} > - </Button>
+                </InputGroup.Prepend>
+                <FormControl className="text-center" readOnly value={rating} onChange={(event) => setRating(event.target.value) } min="0" length="1" type="number" />
+                <InputGroup.Append>
+                    <Button onClick={ () => setRating( rating < 5 ? rating + 1 : 5) }> + </Button>
+                </InputGroup.Append>
+            </InputGroup>
         </>
 
     )

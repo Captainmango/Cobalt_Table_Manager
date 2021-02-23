@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
 
     def avg_rating
         ratings = self.reservations.map{|reservation| reservation.rating}
-        return ratings_list.sum(0.0) / ratings_list.length
+        return ratings.sum(0.0) / ratings.length
     end
 
 end

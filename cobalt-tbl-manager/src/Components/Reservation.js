@@ -1,13 +1,24 @@
 import React from 'react'
+import { Row, Col } from 'react-bootstrap'
 
 const Reservation = (props) => {
     return (
-    <tr>
-        <td>{props.name}</td> 
-        <td>{props.number_of_diners}</td>
-        <td>{props.date}</td>
-        <td>{props.likes}</td>
-    </tr>
+        <Row className="mb-3 mt-3 justify-content-lg-center bg-light">
+            <Col>
+                <div style={{display: 'flex', justifyContent: 'center' }}>
+                    <div>    
+                        <img src={props.img}></img>
+                    </div>
+                </div>
+            </Col>
+            <Col lg={{ span: 5}} className="align-self-center">
+                <div><h5>{props.name}</h5></div>
+                <div><h5>{props.address}</h5></div>
+            </Col>
+            <Col className="align-self-center">
+                {props.rating}
+            </Col>
+        </Row>
     )
 }
 

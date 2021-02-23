@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import SearchInput from '../Containers/Forms/SearchInput';
-import RestaurantsList from '../Components/RestaurantsList'
+import ReservationsList from '../Components/ReservationsList'
 
 
 const Home = () => {
@@ -27,8 +27,8 @@ const Home = () => {
             </Row>
             
         </Container>
+            <ReservationsList />
 
-            <RestaurantsList />
         </>
 
         
