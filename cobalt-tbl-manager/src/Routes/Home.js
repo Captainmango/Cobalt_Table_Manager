@@ -1,13 +1,10 @@
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import SearchInput from '../Containers/Forms/SearchInput';
-import ReservationsList from '../Components/ReservationsList'
 
 
 const Home = () => {
     return (
-
-        <>
         <Container fluid className="bg-info mt-5">
             <Row>
                 <Col lg={{span: 8}}>
@@ -27,13 +24,6 @@ const Home = () => {
             </Row>
             
         </Container>
-        </>
-
-        
-
-
-        
-
     )
 }
 

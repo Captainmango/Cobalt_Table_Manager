@@ -7,7 +7,6 @@ import Restaurants from './Routes/Restaurants'
 import Reservations from './Routes/Reservations';
 import ShowReservation from './Routes/ShowReservation';
 import NewReservation from './Routes/NewReservation'
-import ReservationInput from './Containers/Forms/ReservationInput'
 import Signup from './Routes/Signup'
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"

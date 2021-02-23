@@ -5,7 +5,6 @@ import { useHistory, Link } from 'react-router-dom'
 import FormControl from 'react-bootstrap/FormControl';
 import { logInUser } from '../../Actions/userActions';
 import Button from 'react-bootstrap/Button';
-import { toast } from 'react-toastify';
 import { Container, Row, Col } from 'react-bootstrap';
 
 

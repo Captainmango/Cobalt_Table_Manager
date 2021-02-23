@@ -8,7 +8,7 @@ export const Logout = (props) => {
   const logOut = () => props.logout()
   useEffect(() => {
     logOut()
-  }, [])
+  })
 
   // const handleLogout = () => {
   //   props.logout()
