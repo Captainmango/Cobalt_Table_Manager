@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -10,17 +11,20 @@ import { postReservation } from '../../Actions/reservationsActions'
 import { LocationOption } from '../../Components/LocationOption';
 import Spinner from '../../icons/Spinner.svg';
 
-export const BookingInput = (props) => {
+export const ReservationInput = (props) => {
 
-    const [user_id, setUserID] = useState(props.user.id);
-    const [restaurant, setRestaurant] = useState("");
-    const [time, setTime] = useState("");
-    const [diners, setDiners] = useState("");
+    const {restaurant, time, diners} = useParams()
+    const user_id = props.user.id
+
+    // const [user_id, setUserID] = useState(props.user.id);
+    // const [restaurant, setRestaurant] = useState();
+    // const [time, setTime] = useState("");
+    // const [diners, setDiners] = useState("");
 
 
-    useEffect(() => {
-        props.fetchAllRestaurants()
-    }, [])
+    // useEffect(() => {
+    //     props.fetchAllRestaurants()
+    // }, [])
 
 
     const handleOnSubmit = (event) => {
@@ -34,14 +38,7 @@ export const BookingInput = (props) => {
         setDiners("");
     }
        
-        if(props.requesting) {
-            return <>
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                <div><img src={Spinner} alt="spinner" /></div>
-              </div>
-            </>
-          } else {
-        return (
+    return (
             <div>
         <Container>
         <Row>
@@ -100,4 +97,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookingInput);
+export default connect(mapStateToProps, mapDispatchToProps)(ReservationInput);
