@@ -1,6 +1,6 @@
 class RestaurantsSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :address, :image
+  attributes :id, :name, :address, :image
 
   attribute :avg_rating do |restaurant|
     restaurant.avg_rating

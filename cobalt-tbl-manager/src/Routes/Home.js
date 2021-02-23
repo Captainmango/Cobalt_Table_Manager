@@ -27,8 +27,6 @@ const Home = () => {
             </Row>
             
         </Container>
-            <ReservationsList />
-
         </>
 
         

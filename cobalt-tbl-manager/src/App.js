@@ -5,14 +5,13 @@ import Home from './Routes/Home'
 import Login from './Routes/Login'
 import Restaurants from './Routes/Restaurants'
 import Reservations from './Routes/Reservations';
-import ShowBooking from './Routes/ShowBooking';
+import ShowReservation from './Routes/ShowReservation';
 import Signup from './Routes/Signup'
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
 import Logout from './Routes/Logout';
 import {ToastContainer} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
 
 
 export const App = () => {
@@ -32,7 +31,7 @@ export const App = () => {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/logout" component={Logout} />
               {/* <Route exact path="/bookings/new" component={NewBooking} /> */}
-              <Route exact path ="/reservations/:id" component={ShowBooking} />
+              <Route exact path ="/reservations/:id" component={ShowReservation} />
             </>
           </Switch>
         </Router>

@@ -14,11 +14,11 @@ const RestaurantsList = (props) => {
                     { props.restaurants && props.restaurants.length > 0 ? 
                         props.restaurants.map((restaurant, index) => <Restaurant
                             key={index}
-                            id={index}
-                            img = {restaurant.img} 
-                            address={restaurant.address}
-                            name={restaurant.name}
-                            rating={restaurant.rating} 
+                            id={props.restaurants.attributes.id}
+                            img = {restaurant.attributes.img} 
+                            address={restaurant.attributes.address}
+                            name={restaurant.attributes.name}
+                            rating={restaurant.attributes.rating} 
                         />)
 
                     : <div style={{display: 'flex', justifyContent: 'center'}}>
