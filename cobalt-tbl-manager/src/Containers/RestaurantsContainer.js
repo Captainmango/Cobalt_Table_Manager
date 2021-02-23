@@ -4,9 +4,11 @@ import { fetchAllRestaurants } from '../Actions/restaurantsActions';
 import Spinner from '../icons/Spinner.svg';
 
 export const RestaurantsContainer = (props) => {
+
+  let fetchAllRestaurants = () => props.fetchAllRestaurants()
     
     useEffect((props) => {
-      props.fetchAllRestaurants();
+      fetchAllRestaurants();
     }, [])
 
 

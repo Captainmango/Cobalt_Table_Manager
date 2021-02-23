@@ -23,7 +23,7 @@ class RestaurantsController < ApplicationController
     private
 
     def search_params
-        params.permit(:search_term)
+        params.permit(:search_term, :restaurant)
     end
 
     # def restaurant_params

@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap'
 import { searchRestaurants } from '../../Actions/restaurantsActions';
 
 const SearchInput = (props) => {
+    let history = useHistory()
     const [searchTerm, setSearchTerm] = useState("")
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
         props.searchRestaurants(searchTerm);
-        
+        history.push("/")        
     }
 
     return (
