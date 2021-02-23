@@ -7,6 +7,7 @@ import Restaurants from './Routes/Restaurants'
 import Reservations from './Routes/Reservations';
 import ShowReservation from './Routes/ShowReservation';
 import NewReservation from './Routes/NewReservation'
+import ReservationInput from './Containers/Forms/ReservationInput'
 import Signup from './Routes/Signup'
 import { connect } from 'react-redux';
 import { logOutUser } from "./Actions/userActions"
@@ -31,7 +32,7 @@ export const App = () => {
               <Route exact path="/login" component={Login}/>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/logout" component={Logout} />
-              <Route exact path="/reservations/new?id=:id&time=:time&diners=:diners" component={NewReservation} />
+              <Route path="/reservations/new/id/:id/diners/:diners" component={ReservationInput} />
               <Route exact path ="/reservations/:id" component={ShowReservation} />
             </>
           </Switch>

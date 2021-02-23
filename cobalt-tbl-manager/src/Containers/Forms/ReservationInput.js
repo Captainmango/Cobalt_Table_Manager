@@ -5,86 +5,65 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import { fetchAllRestaurants } from '../../Actions/restaurantsActions'
 import { postReservation } from '../../Actions/reservationsActions'
-import { LocationOption } from '../../Components/LocationOption';
-import Spinner from '../../icons/Spinner.svg';
 
 export const ReservationInput = (props) => {
 
-    const {restaurant, time, diners} = useParams()
+    const {id, diners} = useParams()
     const user_id = props.user.id
+    const restaurant = props.restaurants.find( restaurant => restaurant.id === id )
 
     // const [user_id, setUserID] = useState(props.user.id);
-    // const [restaurant, setRestaurant] = useState();
-    // const [time, setTime] = useState("");
-    // const [diners, setDiners] = useState("");
-
-
-    // useEffect(() => {
-    //     props.fetchAllRestaurants()
-    // }, [])
-
+    const [time, setTime] = useState("");
+    const [numberOfDiners, setNumberOfDiners] = useState(diners);
+    console.log("we got here")
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
-        props.createReservation(user_id, {restaurant,
-                                 time,
-                                 diners});
-        
-        setRestaurant("");
+        props.createReservation(user_id, {restaurant_id: restaurant.id,
+                                            time,
+                                            diners});
+                    
         setTime("");
-        setDiners("");
+        setNumberOfDiners("");
     }
        
     return (
+        
             <div>
+               <h3>We are here</h3>
         <Container>
-        <Row>
-        <Col sm={{ size: 6, order: 2, offset: 1 }}><h1 className="text-center">New Booking Form</h1></Col>
-        </Row>
-        <br/>
-        <br/>
-         <Form>
+        <Row >
+            <Form>
 
-      <Form.Group controlId = "formBasicLocation">
-              <Form.Label>Location</Form.Label>
-              <Form.Control onChange={event => setRestaurant(event.target.value)} name="location" as="select" defaultValue="Choose your restaurant">
-                  {props.restaurants && props.restaurants.length > 0 ?
-                  props.restaurants.map((restaurant, index) => 
-                  <LocationOption key={index} value={restaurant.id} name={restaurant.attributes.name} />) :
-                <option>Loading options</option>}
-              </Form.Control> 
-          </Form.Group>
+            <Form.Group controlId="formBasicDateTime">
+                <Form.Label>Date/ Time</Form.Label>
+                <Form.Control value={time} onChange={event => setTime(event.target.value)} name="datetime" type="datetime-local" />
+            </Form.Group>
 
-          <Form.Group controlId="formBasicDateTime">
-            <Form.Label>Date/ Time</Form.Label>
-            <Form.Control value={time} onChange={event => setTime(event.target.value)} name="datetime" type="datetime-local" />
-        </Form.Group>
-
-        <Form.Group controlId="formBasicDiners">
-            <Form.Label>Diners</Form.Label>
-            <Form.Control value={diners} onChange={event => setDiners(event.target.value)} name="number_of_diners" type="number" min="0" step="1" />
-        </Form.Group>
+            <Form.Group controlId="formBasicDiners">
+                <Form.Label>Diners</Form.Label>
+                <Form.Control value={numberOfDiners} onChange={event => setNumberOfDiners(event.target.value)} name="number_of_diners" type="number" min="0" step="1" />
+            </Form.Group>
 
 
-          
-          <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit(event) }} >
-              Submit
-          </Button>
-          </Form>
+            
+            <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit(event) }} >
+                Submit
+            </Button>
+            </Form>
+          </Row>
       </Container>
   </div>
         
             
         )
     }
-}
+
 
 const mapStateToProps = (state) => {
     return {
-    reservations: state.reservations.reservations,
+    restaurants: state.restaurants.restaurants,
     user: state.users.user,
     requesting: state.reservations.requesting
     }   
@@ -92,8 +71,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    fetchAllRestaurants: () => {dispatch(fetchAllRestaurants())},
-    createReservation: (user_id, reservation) => {dispatch(postReservation(user_id, reservation))}
+        createReservation: (user_id, reservation) => {dispatch(postReservation(user_id, reservation))}
     }
 }
 
