@@ -4,7 +4,7 @@ import ReservationInput from '../Containers/Forms/ReservationInput'
 const NewReservation = () => {
     return (
         <div>
-            <h3> we are here</h3>
+            <h2 className="text-center pt-5"> Reservation Confirmation </h2>
             <ReservationInput />
         </div>
     )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -9,6 +9,8 @@ import { postReservation } from '../../Actions/reservationsActions'
 
 export const ReservationInput = (props) => {
 
+    let history = useHistory()
+
     const {id, diners} = useParams()
     const user_id = props.user.id
     const restaurant = props.restaurants.find( restaurant => restaurant.id === id )
@@ -16,7 +18,6 @@ export const ReservationInput = (props) => {
     // const [user_id, setUserID] = useState(props.user.id);
     const [time, setTime] = useState("");
     const [numberOfDiners, setNumberOfDiners] = useState(diners);
-    console.log("we got here")
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
@@ -26,35 +27,45 @@ export const ReservationInput = (props) => {
                     
         setTime("");
         setNumberOfDiners("");
+        history.push("/")
     }
        
     return (
         
             <div>
-               <h3>We are here</h3>
-        <Container>
-        <Row >
-            <Form>
+                <Container className="bg-light">
+                    <Row className="mb-3 mt-3 justify-content-lg-center bg-light">
 
-            <Form.Group controlId="formBasicDateTime">
-                <Form.Label>Date/ Time</Form.Label>
-                <Form.Control value={time} onChange={event => setTime(event.target.value)} name="datetime" type="datetime-local" />
-            </Form.Group>
+                        <img src={restaurant.attributes.image+"/300x300"} alt="restaurant"></img>
+                    </Row>    
+                    <Row className="justify-content-lg-center">
+                    <h5>{restaurant.attributes.name}</h5>
+                    </Row>
+                    <Row className="justify-content-lg-center">    
+                    <p>{restaurant.attributes.address}</p>
+                    </Row>
+                    <Row className="mb-3 mt-3 justify-content-lg-center bg-light">
+                        <Form className="p-3">
+                            <Form.Group controlId="formBasicTime">
+                                <Form.Label>Date/ Time</Form.Label>
+                                <Form.Control value={time} onChange={event => setTime(event.target.value)} name="datetime" type="datetime-local" />
+                            </Form.Group>
 
-            <Form.Group controlId="formBasicDiners">
-                <Form.Label>Diners</Form.Label>
-                <Form.Control value={numberOfDiners} onChange={event => setNumberOfDiners(event.target.value)} name="number_of_diners" type="number" min="0" step="1" />
-            </Form.Group>
+                            <Form.Group controlId="formBasicDiners">
+                                <Form.Label>Diners</Form.Label>
+                                <Form.Control value={numberOfDiners} onChange={event => setNumberOfDiners(event.target.value)} name="number_of_diners" type="number" min="1" step="1" />
+                            </Form.Group>
 
 
-            
-            <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit(event) }} >
-                Submit
-            </Button>
-            </Form>
-          </Row>
-      </Container>
-  </div>
+                            <Form.Row className="justify-content-center">
+                                <Button variant="primary" type="submit" onClick={ event => { handleOnSubmit(event) }} >
+                                    Submit
+                                </Button>
+                            </Form.Row>
+                        </Form>
+                    </Row>
+                </Container>
+            </div>
         
             
         )

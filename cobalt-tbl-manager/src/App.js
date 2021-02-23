@@ -32,7 +32,7 @@ export const App = () => {
               <Route exact path="/login" component={Login}/>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/logout" component={Logout} />
-              <Route path="/reservations/new/id/:id/diners/:diners" component={ReservationInput} />
+              <Route path="/reservations/new/id/:id/diners/:diners" component={NewReservation} />
               <Route exact path ="/reservations/:id" component={ShowReservation} />
             </>
           </Switch>
