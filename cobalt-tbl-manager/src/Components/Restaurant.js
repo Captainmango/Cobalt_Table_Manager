@@ -14,7 +14,7 @@ const Restaurant = (props) => {
             <Col>
                 <div style={{display: 'flex', justifyContent: 'center' }}>
                     <div>    
-                        <img src={props.img}></img>
+                        <img src={props.img} alt="restaurant"></img>
                     </div>
                 </div>
             </Col>

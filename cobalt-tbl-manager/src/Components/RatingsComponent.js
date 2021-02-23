@@ -10,12 +10,12 @@ function RatingComponent(props) {
         <>
             <InputGroup>
                 <InputGroup.Prepend>
-                    <Button variant="outline">Rate Reservation</Button>
-                    <Button onClick={()=> setRating(rating > 0 ? rating - 1 : 0 )} > - </Button>
+                    <Button variant="outline-primary">Rate Reservation</Button>
+                    <Button variant="danger" onClick={()=> setRating(rating > 0 ? rating - 1 : 0 )} > - </Button>
                 </InputGroup.Prepend>
                 <FormControl className="text-center" readOnly value={rating} onChange={(event) => setRating(event.target.value) } min="0" length="1" type="number" />
                 <InputGroup.Append>
-                    <Button onClick={ () => setRating( rating < 5 ? rating + 1 : 5) }> + </Button>
+                    <Button variant="success" onClick={ () => setRating( rating < 5 ? rating + 1 : 5) }> + </Button>
                 </InputGroup.Append>
             </InputGroup>
         </>

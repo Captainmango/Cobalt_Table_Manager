@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchAllRestaurants } from '../Actions/restaurantsActions';
-import LocationsTable from '../Components/RestaurantsList';
 import Spinner from '../icons/Spinner.svg';
 
 export const RestaurantsContainer = (props) => {
