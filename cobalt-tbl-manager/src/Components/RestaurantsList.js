@@ -4,20 +4,6 @@ import Restaurant from './Restaurant'
 import Spinner from '../icons/Spinner.svg'
 import Container from 'react-bootstrap/Container'
 
-const resTest = [
-    { img: "https://source.unsplash.com/collection/4173854/80x80",
-     address: "test",
-     name: "test",
-     rating: "4" },
-    { img: "https://source.unsplash.com/collection/4173854/80x80",
-     address: "test",
-     name: "test",
-     rating: "4" },
-    { img: "https://source.unsplash.com/collection/4173854/80x80",
-     address: "test",
-     name: "test",
-     rating: "4" },
-]
 
 const RestaurantsList = (props) => {
     
@@ -25,8 +11,8 @@ const RestaurantsList = (props) => {
         <div>
             <Container className="p-3">
 
-                    { resTest && resTest.length > 0 ? 
-                        resTest.map((restaurant, index) => <Restaurant
+                    { props.restaurants && props.restaurants.length > 0 ? 
+                        props.restaurants.map((restaurant, index) => <Restaurant
                             key={index}
                             id={index}
                             img = {restaurant.img} 
