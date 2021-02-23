@@ -8,6 +8,7 @@ export const ReservationsContainer = (props) => {
 
     let requesting = props.requesting
     let user = props.user
+    let children = props.children
     let fetchMyReservations = (user_id) => props.fetchMyReservations(user_id)  
 
     useEffect(() => {
@@ -25,7 +26,7 @@ export const ReservationsContainer = (props) => {
             </div>
           </>
         } else {
-          return <ReservationsList />
+          return <> {children} </>
         }
       }
 
