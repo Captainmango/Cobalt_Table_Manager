@@ -10,7 +10,7 @@ function RatingComponent(props) {
         <>
             <InputGroup>
                 <InputGroup.Prepend>
-                    <Button variant="outline-primary">Rate Reservation</Button>
+                    <Button variant="outline-primary">Rate</Button>
                     <Button variant="danger" onClick={()=> setRating(rating > 0 ? rating - 1 : 0 )} > - </Button>
                 </InputGroup.Prepend>
                 <FormControl className="text-center" readOnly value={rating} onChange={(event) => setRating(event.target.value) } min="0" length="1" type="number" />

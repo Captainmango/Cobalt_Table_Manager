@@ -2,34 +2,37 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMyReservations } from '../Actions/reservationsActions';
 import Spinner from '../icons/Spinner.svg';
-import BookingsTable from '../Components/ReservationsList';
+import ReservationsList from '../Components/ReservationsList';
 
 export const ReservationsContainer = (props) => {
 
-    
-    useEffect((props) => {
-      props.fetchMyReservations()
+    let requesting = props.requesting
+    let user = props.user
+    let fetchMyReservations = (user_id) => props.fetchMyReservations(user_id)  
+
+    useEffect(() => {
+      fetchMyReservations(user.id)
 
     }, [])
       
 
 
-    const handleLoading = (props) => {
-        if(props.requesting) {
+    const handleLoading = () => {
+        if(requesting) {
           return <>
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <div><img src={Spinner} alt="spinner" /></div>
             </div>
           </>
         } else {
-          return <BookingsTable />
+          return <ReservationsList />
         }
       }
 
         return (
           
             <div>
-                <h1>My Bookings</h1>
+                <h1 className="text-center pt-5">My Bookings</h1>
                 <br />
                 { handleLoading() }
             </div>
@@ -39,7 +42,7 @@ export const ReservationsContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-    bookings: state.reservations.reservations,
+    reservations: state.reservations.reservations,
     user: state.users.user,
     requesting: state.reservations.requesting
     }   

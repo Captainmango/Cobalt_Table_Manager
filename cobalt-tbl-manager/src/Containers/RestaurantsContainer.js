@@ -35,7 +35,7 @@ export const RestaurantsContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-    locations: state.restaurants.restaurants,
+    restaurants: state.restaurants.restaurants,
     user: state.users.user,
     requesting: state.restaurants.requesting
     }   

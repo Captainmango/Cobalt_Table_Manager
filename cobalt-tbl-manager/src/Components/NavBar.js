@@ -24,9 +24,8 @@ const CobaltNavBar = (props) => {
                 {isLoggedIn ? <NavLink className="ml-3 mr-3 align-self-center" to="/logout">Log out</NavLink> : <NavLink className="ml-3 mr-3 align-self-center" to="/login">Login/ Sign up</NavLink>}
                 
                 <NavDropdown className="align-self-center" disabled={!isLoggedIn} title={isLoggedIn ? `${props.user.first_name} ${props.user.last_name}` : "Dropdown"} id="basic-nav-dropdown">
-                    <NavLink to="/bookings">My Bookings</NavLink> <br />
-                    <NavLink to="/locations" >My Locations</NavLink> <br />
-                    <NavLink to="/bookings/new" >Make A Booking</NavLink>                     
+                    <NavLink to="/reservations">My Reservations</NavLink> <br />
+                    <NavLink to="/locations" >Restaurants</NavLink> <br />                  
                 </NavDropdown>
                 </Nav>      
             </Navbar.Collapse>

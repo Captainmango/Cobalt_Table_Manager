@@ -15,7 +15,12 @@ const Reservation = (props) => {
                 <div><h5>{props.name}</h5></div>
                 <div><h5>{props.address}</h5></div>
             </Col>
-            <Col className="align-self-center">
+
+            <Col lg={{ span: 2}} className="align-self-center">
+                <div><h5> {props.diners} Diners  </h5></div>
+            </Col>
+
+            <Col lg={{span: 3}} className="align-self-center">
                 {props.rating}
             </Col>
         </Row>

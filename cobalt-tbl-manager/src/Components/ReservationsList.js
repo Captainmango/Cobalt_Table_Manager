@@ -5,24 +5,6 @@ import Container from 'react-bootstrap/Container'
 import RatingsComponent from './RatingsComponent'
 import Spinner from '../icons/Spinner.svg'
 
-const resTest = [
-    { name: "test",
-    diners: "4",
-    time: "22/02/2022",
-    img: "test",
-    address: "test" },
-    { name: "test",
-    diners: "4",
-    time: "22/02/2022",
-    img: "test",
-    address: "test" },
-    { name: "test",
-    diners: "4",
-    time: "22/02/2022",
-    img: "test",
-    address: "test" },
-
-]
 
 const ReservationsList = (props) => {
     
@@ -31,15 +13,15 @@ const ReservationsList = (props) => {
 
             <Container className="p-3">
 
-                { resTest && resTest.length > 0 ? 
-                        resTest.map((reservation, index) => <Reservation
+                { props.reservations && props.reservations.length > 0 ? 
+                        props.reservations.map((reservation, index) => <Reservation
                             key={index}
                             id={index}
-                            img={reservation.img} 
-                            name={reservation.name}
-                            address={reservation.address}
-                            diners={reservation.diners}
-                            time={new Date(reservation.time).toString()}
+                            img={reservation.attributes.restaurant.image+'/80x80'} 
+                            name={reservation.attributes.restaurant.name}
+                            address={reservation.attributes.restaurant.address}
+                            diners={reservation.attributes.diners}
+                            time={new Date(reservation.attributes.time).toString()}
                             rating={<RatingsComponent rating={0} />}/>)
 
                     : <div style={{display: 'flex', justifyContent: 'center'}}>
