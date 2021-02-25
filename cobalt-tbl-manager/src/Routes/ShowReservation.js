@@ -8,7 +8,7 @@ const ShowReservation = (props) => {
     
     return (
         <>
-          <ReservationsContainer children={<ReservationView />} />  
+          <ReservationView />  
         </>
     )
 }
