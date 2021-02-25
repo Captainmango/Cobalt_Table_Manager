@@ -40,4 +40,3 @@ are required. If more guidance is needed, please check Twilio's quickstart docum
 * Implement triggers and updates for SQL in back end
 * Implement different booking views for owners and diners
 * Expand SMS integration to allow for SMS booking
-* Improve UI and UX to make experience cleaner 
