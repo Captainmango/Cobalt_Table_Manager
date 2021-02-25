@@ -10,49 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_130300) do
+ActiveRecord::Schema.define(version: 2021_02_04_140720) do
 
-  create_table "bookings", force: :cascade do |t|
-    t.integer "location_id"
-    t.integer "user_id"
-    t.integer "table_id"
-    t.string "datetime"
-    t.integer "number_of_diners"
-    t.string "notes"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "diners"
+    t.string "time"
+    t.integer "rating"
+    t.bigint "restaurant_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_bookings_on_location_id"
-    t.index ["table_id"], name: "index_bookings_on_table_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.integer "users_id"
+  create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.string "location_password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_locations_on_users_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "role_title"
+    t.string "address"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "special_considerations", force: :cascade do |t|
-    t.string "consideration_title"
+  create_table "sms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "tables", force: :cascade do |t|
-    t.integer "location_id"
-    t.integer "capacity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_tables_on_location_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,16 +45,10 @@ ActiveRecord::Schema.define(version: 2020_07_07_130300) do
     t.string "last_name"
     t.string "username"
     t.string "password_digest"
-    t.string "mobile_number"
     t.string "email_address"
-    t.integer "role_id"
-    t.integer "location_id"
-    t.integer "table_id"
+    t.string "mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_users_on_location_id"
-    t.index ["role_id"], name: "index_users_on_role_id"
-    t.index ["table_id"], name: "index_users_on_table_id"
   end
 
 end

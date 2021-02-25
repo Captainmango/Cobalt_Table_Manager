@@ -6,7 +6,7 @@
 
 ## Introduction
 
-This project is a React app with Redux state management that uses a Ruby on Rails back end. This app is my first attempt at building a full API and front end to handle a user experience end to end. The use case of this application is to help a restuarant owner view their different restaurants and allow diners to place bookings at said restaurants. 
+This project is a React app with Redux state management that uses a Ruby on Rails back end. This app is my first attempt at building a full API and front end to handle a user experience end to end. The use case of this application is to help a diner make a booking at a restaurant with an easy to use UI and intuitive confirmations for the reservation.
 
 I would like to expand on this to have a variety of different features which will allow me to better understand the data flow between a front end and back end and how each informs the other.
 
@@ -29,6 +29,10 @@ The default port for the API is 3001
 $ npm start
 ```
 The default port for the front end is 3000
+
+If running this locally, pleae ensure you have a .env file in the cobaltAPI directory with vars for use with Twilio.
+If this isn't present, there may be errors while submiting the booking. Please see the SMS controller to understand what vars
+are required. If more guidance is needed, please check Twilio's quickstart documentation.
 
 
 ## Future updates

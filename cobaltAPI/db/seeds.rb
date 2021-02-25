@@ -6,76 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-table_sizes = [2,4,6,8,10]
+# unsplash URL for random pic in meals collection: https://source.unsplash.com/collection/4173854
 
-admin = Role.create(role_title: "admin")
-owner = Role.create(role_title: "owner")
-server = Role.create(role_title: "server")
-diner = Role.create(role_title: "diner")
-    admin.save
-    owner.save
-    server.save
-    diner.save
+admin = User.create(first_name: "Edward", 
+                    last_name: "Heaver", 
+                    username: "Edward21", 
+                    password: "123456", 
+                    email_address: "test@test.com",
+                    mobile_number: "+447931555501")
+admin.save
 
-admin = Role.find(1)
-user = admin.users.create(first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    username: Faker::Internet.username,
-    password: "123456",
-    mobile_number: "+447931555501",
-    email_address: Faker::Internet.email
-    )
-user.save
-
-# priveliges are the following: admin = 1, owner = 2, server = 3, diner = 4
-
-5.times do 
-    admin = Role.find(2)
-    user = admin.users.create(first_name: Faker::Name.first_name,
-                last_name: Faker::Name.last_name,
-                username: Faker::Internet.username,
-                password: "123456",
-                mobile_number: "+447931555501",
-                email_address: Faker::Internet.email
-                )
-    user.save
+10.times do
+    nu_restaurant = Restaurant.create(name: Faker::Company.name,
+                      address: Faker::Address.full_address,
+                      image: "https://source.unsplash.com/collection/4173854")
+    nu_restaurant.save
 end
 
-5.times do 
-    diner = Role.find(4)
-    user = diner.users.create(first_name: Faker::Name.first_name,
-                last_name: Faker::Name.last_name,
-                username: Faker::Internet.username,
-                password: "123456",
-                mobile_number: "+447931555501",
-                email_address: Faker::Internet.email
-                )
-    user.save
+20.times do
+    restaurant = Restaurant.find(rand(1..10))
+    nu_reservation = admin.reservations.create(restaurant_id: restaurant.id, 
+                                               diners: rand(2..8), 
+                                               time: rand(30.days).seconds.from_now, 
+                                               rating: rand(2..5))
+    nu_reservation.save
 end
-
-5.times do
-    nu_loc = Location.create(name: Faker::Company.name, location_password: "123456")
-    nu_loc.users << User.find(2)
-    nu_loc.save
-end
-
-Location.all.each do |location|
-    5.times do
-        table = location.tables.create(capacity: table_sizes.sample)
-        table.save
-    end
-end
-
-
-
-40.times do
-    user = User.find(rand(7..11))
-    location = Location.find(rand(1..5))
-    table = location.tables[rand(0..4)]
-    booking = user.bookings.create(location: location, table: table, datetime: rand(30.days).seconds.from_now, number_of_diners: rand(2..table.capacity), notes: Faker::Lorem.sentence)
-    booking.save
-end
-
 
 
 
