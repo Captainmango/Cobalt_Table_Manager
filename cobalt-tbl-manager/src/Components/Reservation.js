@@ -1,9 +1,13 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 
 const Reservation = (props) => {
+
+    let history = useHistory()
+
     return (
-        <Row className="mb-3 mt-3 justify-content-lg-center bg-light">
+        <Row onClick={event => history.push(`/reservations/${props.id}`) } className="mb-3 mt-3 justify-content-lg-center bg-light">
             <Col>
                 <div style={{display: 'flex', justifyContent: 'center' }}>
                     <div>    

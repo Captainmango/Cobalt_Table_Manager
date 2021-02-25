@@ -1,17 +1,18 @@
 import React from 'react';
+import ReservationsContainer from '../Containers/ReservationsContainer'
+import { connect } from 'react-redux'
+import ReservationView from '../Components/ReservationView'
 import { useParams } from 'react-router-dom';
 
-const ShowReservation = () => {
-
-    let { id } = useParams();
-    // TODO: use IF statements and filter to get the reservation we want to show. 
-    // May also need to write an action to get this from the API
+const ShowReservation = (props) => {
     
     return (
-        <div>
-            
-        </div>
+        <>
+          <ReservationsContainer children={<ReservationView />} />  
+        </>
     )
 }
+
+
 
 export default ShowReservation

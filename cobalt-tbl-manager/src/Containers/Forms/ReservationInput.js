@@ -33,8 +33,8 @@ export const ReservationInput = (props) => {
     return (
         
             <div>
-                <Container className="bg-light">
-                    <Row className="mb-3 mt-3 justify-content-lg-center bg-light">
+                <Container className="bg-light container-md">
+                    <Row className="m-3 p-3 justify-content-lg-center bg-light">
 
                         <img src={restaurant.attributes.image+"/300x300"} alt="restaurant"></img>
                     </Row>    
