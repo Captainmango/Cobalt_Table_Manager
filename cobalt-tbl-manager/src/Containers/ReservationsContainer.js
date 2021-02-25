@@ -13,7 +13,7 @@ export const ReservationsContainer = (props) => {
     useEffect(() => {
       fetchMyReservations(user.id)
 
-    })
+    },[])
       
 
 

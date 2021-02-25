@@ -16,7 +16,7 @@ const ReservationsList = (props) => {
                 { props.reservations && props.reservations.length > 0 ? 
                         props.reservations.map((reservation, index) => <Reservation
                             key={index}
-                            id={index}
+                            id={reservation.id}
                             img={reservation.attributes.restaurant.image+'/80x80'} 
                             name={reservation.attributes.restaurant.name}
                             address={reservation.attributes.restaurant.address}
