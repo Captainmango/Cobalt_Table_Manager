@@ -6,6 +6,8 @@ function RatingComponent(props) {
 
     const [rating, setRating] = useState(props.rating)
 
+    //add reservation_id to the function call as that it the prop I passed down
+
     return (
         <>
             <InputGroup>

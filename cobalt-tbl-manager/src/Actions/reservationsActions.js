@@ -38,3 +38,22 @@ export const postReservation = (user_id, reservation) => {
     }
    
 }
+
+export const updateReservationRating = (user_id, reservation_id, reservation) => {
+    return (dispatch) => {
+        dispatch({type: "UPDATE_RESERVATION"});
+        fetch(`http://localhost:3001/users/${user_id}/reservations/${reservation_id}`, {
+            method: 'UPDATE',
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.token}` },
+            body: JSON.stringify(reservation)
+        })
+        .then(response => response.json())
+        .then(returnData => {
+            let reservation = returnData.data;
+            dispatch({type:"UPDATE_RESERVATION_RATING", action: {reservation: reservation, id: reservation_id}})
+        })
+    }
+
+} 
