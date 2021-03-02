@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { useState } from 'react'
 import { Button, InputGroup, FormControl } from 'react-bootstrap'
+import { updateReservationRating } from '../Actions/reservationsActions'
 
 function RatingComponent(props) {
 
@@ -12,7 +14,7 @@ function RatingComponent(props) {
         <>
             <InputGroup>
                 <InputGroup.Prepend>
-                    <Button variant="outline-primary">Rate</Button>
+                    <Button onClick={event => updateReservationRating()} variant="outline-primary">Rate</Button>
                     <Button variant="danger" onClick={()=> setRating(rating > 0 ? rating - 1 : 0 )} > - </Button>
                 </InputGroup.Prepend>
                 <FormControl className="text-center" readOnly value={rating} onChange={(event) => setRating(event.target.value) } min="0" length="1" type="number" />
@@ -25,4 +27,10 @@ function RatingComponent(props) {
     )
 }
 
-export default RatingComponent;
+const mapDispatchToProps = dispatch => (
+    {
+        updateReservationRating: (user_id, reservation_id, reservation) => dispatch(updateReservationRating(user_id, reservation_id, reservation))
+    }
+)
+
+export default connect(null, mapDispatchToProps)(RatingComponent);

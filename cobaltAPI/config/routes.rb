@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/users/:user_id/reservations", to: "reservations#index"
   post "/users/:user_id/reservations", to: "reservations#create"
   get "/users/:user_id/reservations/:reservation_id", to: "reservations#show"
+  patch "/users/:user_id/reservations/:reservation_id", to: "reservations#update"
   
   post "/signup", to: "users#create"
   post "/login", to: "users#login"

@@ -22,7 +22,7 @@ const ReservationsList = (props) => {
                             address={reservation.attributes.restaurant.address}
                             diners={reservation.attributes.diners}
                             time={new Date(reservation.attributes.time).toString()}
-                            rating={<RatingsComponent rating={reservation.attributes.rating} reservation_id={reservation.id} />}/>)
+                            rating={<RatingsComponent rating={reservation.attributes.rating} reservation_id={reservation.id} reservation={reservation} />}/>)
 
                     : <div style={{display: 'flex', justifyContent: 'center'}}>
                         <div><img src={Spinner} alt="spinner" /></div>

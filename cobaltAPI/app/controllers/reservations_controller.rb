@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 
     before_action :find_user
-    before_action :find_reservation, only: [:show]
+    before_action :find_reservation, only: [:show, :update]
 
     def index
         reservations = @user.reservations
@@ -23,7 +23,12 @@ class ReservationsController < ApplicationController
     end
 
     def show
-         render json: ReservationsSerializer.new(@reservation).serialized_json
+        render json: ReservationsSerializer.new(@reservation).serialized_json
+    end
+
+    def update
+        @reservation.update(time: reservation_params[:time], diners: reservation_params[:diners], rating: reservation_params[:rating])
+        render json: ReservationsSerializer.new(@reservation).serialized_json
     end
     
 
@@ -53,7 +58,8 @@ class ReservationsController < ApplicationController
                       :reservation_id,
                       :restaurant_id,
                       :time,
-                      :diners
+                      :diners,
+                      :rating
                      )
     end
 
