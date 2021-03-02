@@ -37,7 +37,7 @@ const ReservationView = (props) => {
 
                     <Row className="justify-content-lg-center">
                         <Col lg={{span: 3}}>
-                            <RatingsComponent rating={0} />
+                            <RatingsComponent rating={reservation.attributes.rating} reservation={reservation} />
                         </Col>
                     </Row>
 

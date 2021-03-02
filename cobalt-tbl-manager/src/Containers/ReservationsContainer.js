@@ -12,7 +12,7 @@ export const ReservationsContainer = (props) => {
 
     useEffect(() => {
       fetchMyReservations(user.id)
-
+      // eslint-disable-next-line
     },[])
       
 

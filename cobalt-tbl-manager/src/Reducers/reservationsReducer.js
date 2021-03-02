@@ -30,20 +30,9 @@ function reservationsReducer(state = {reservations: [], requesting: false }, act
         case "UPDATE_RESERVATION":
             return {                
                 ...state,
-                reservations: action.reservations,
+                reservations: state.reservations,
                 requesting: true
 
-            }
-
-        case "UPDATE_RESERVATION_RATING":
-            return {
-                ...state,
-                reservations: [
-                    ...state.reservations.slice(0, action.id),
-                    {...state.reservations[action.id], ...action.reservation },
-                    ...state.reservations.slice(action.id + 1)
-                              ],
-                requesting: false
             }
 
         default:
