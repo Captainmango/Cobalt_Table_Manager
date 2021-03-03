@@ -35,6 +35,6 @@ test:
 production:
   database: cobalt_prod
   username: cobalt
-  password: <%=ENV['DB_PASSWORD'] %>
+  # password: <%=ENV['DB_PASSWORD'] %>
   url: <%=ENV['DATABASE_URL'] %>
   role: cobalt
