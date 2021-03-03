@@ -32,9 +32,9 @@ test:
 # test:
 #   database: cobalt
 
-# production:
-#   <<: *default
-#   database: cobalt
-#   username: cobalt
-#   password: <%=ENV['DB_PASSWORD'] %>
-#   role: cobalt
+production:
+  database: cobalt_prod
+  username: cobalt
+  password: <%=ENV['DB_PASSWORD'] %>
+  url: <%=ENV['DATABASE_URL'] %>
+  role: cobalt
